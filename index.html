@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#0b0712" />
-  <title>Stranger Things — The Upside Down Experience</title>
+  <title>Hawkins Archive — Stranger Things (4 Pages)</title>
 
   <!-- Fonts: cinematic display + readable grotesk -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,7 +13,6 @@
 
   <style>
     :root{
-      /* Palette: analog horror / 80s neon without the generic purple-blue gradient */
       --bg: #07060b;
       --ink: #f3eefb;
       --muted: rgba(243,238,251,.72);
@@ -55,7 +54,7 @@
       -moz-osx-font-smoothing: grayscale;
     }
 
-    /* Subtle film grain (pure CSS) */
+    /* Subtle film grain */
     body::before{
       content:"";
       position:fixed;
@@ -70,7 +69,6 @@
       z-index:0;
     }
 
-    /* Floating spores + red lightning threads */
     .atmosphere{
       position:fixed;
       inset:0;
@@ -84,10 +82,8 @@
 
     a{ color:inherit; text-decoration:none; }
     button{ font:inherit; color:inherit; }
-
     .wrap{ position:relative; z-index:1; }
 
-    /* Skip link */
     .skip{
       position:absolute;
       left:12px; top:12px;
@@ -101,7 +97,6 @@
     }
     .skip:focus{ transform: translateY(0); outline:none; }
 
-    /* Header */
     header{
       position:sticky;
       top:0;
@@ -196,6 +191,8 @@
     }
     nav a:hover{ color: var(--ink); }
     nav a:hover::after{ transform: scaleX(1); }
+    nav a[aria-current="page"]{ color: var(--ink); }
+    nav a[aria-current="page"]::after{ transform: scaleX(1); opacity: .95; }
 
     .nav-actions{
       display:flex;
@@ -312,24 +309,21 @@
     }
     .mobile-panel a:hover{ color: var(--ink); background: rgba(255,255,255,.04); }
 
-    /* Hero */
     main{ display:block; }
-    .hero{
+    section{
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 22px 18px;
+    }
+
+    /* Page header (used on non-home pages) */
+    .page-hero{
       max-width: var(--max);
       margin:0 auto;
-      padding: 34px 18px 20px;
+      padding: 28px 18px 10px;
       display:grid;
-      grid-template-columns: 1fr;
-      gap: 18px;
+      gap: 12px;
     }
-
-    .hero-top{
-      display:grid;
-      grid-template-columns: 1fr;
-      gap: 18px;
-      align-items:end;
-    }
-
     .kicker{
       display:inline-flex;
       align-items:center;
@@ -360,21 +354,45 @@
     }
 
     .title{
-      margin: 14px 0 8px;
+      margin: 8px 0 0;
       font-family: "Cinzel", serif;
       font-weight: 800;
       letter-spacing: .08em;
       text-transform: uppercase;
       line-height: .95;
-      font-size: clamp(34px, 6vw, 72px);
+      font-size: clamp(30px, 5.2vw, 58px);
     }
-    .title .glitch{
+    .subtitle{
+      margin: 0;
+      color: var(--muted);
+      font-size: clamp(14px, 2vw, 18px);
+      line-height: 1.6;
+      max-width: 70ch;
+    }
+
+    /* HOME layout (kept from your original, but made "page-aware") */
+    .home-grid{
+      max-width: var(--max);
+      margin:0 auto;
+      padding: 18px 18px 20px;
+      display:grid;
+      grid-template-columns: 1fr;
+      gap: 18px;
+    }
+    .home-top{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap: 18px;
+      align-items:end;
+    }
+
+    .glitch{
       position:relative;
       display:inline-block;
       padding: 2px 0;
     }
-    .title .glitch::before,
-    .title .glitch::after{
+    .glitch::before,
+    .glitch::after{
       content: attr(data-text);
       position:absolute;
       left:0; top:0;
@@ -386,7 +404,7 @@
       transform: translate(1px, -1px);
       animation: glitch 3.8s steps(10) infinite;
     }
-    .title .glitch::after{
+    .glitch::after{
       color: rgba(193,10,43,.85);
       opacity:.18;
       clip-path: inset(54% 0 0 0);
@@ -412,10 +430,9 @@
       display:flex;
       flex-wrap:wrap;
       gap:12px;
-      margin-top: 18px;
+      margin-top: 16px;
       align-items:center;
     }
-
     .hint{
       display:flex;
       align-items:center;
@@ -447,7 +464,6 @@
       box-shadow: 0 0 18px rgba(56,246,255,.16);
     }
 
-    /* Portal stage (right) */
     .stage{
       border-radius: var(--r-lg);
       border: 1px solid rgba(255,255,255,.12);
@@ -460,9 +476,7 @@
       position:relative;
       min-height: 360px;
     }
-
     .stage::before{
-      /* red "wet" membrane veil */
       content:"";
       position:absolute;
       inset:-20%;
@@ -475,7 +489,6 @@
       transform: rotate(-6deg);
     }
     .stage::after{
-      /* subtle scanline vignette */
       content:"";
       position:absolute;
       inset:0;
@@ -485,7 +498,6 @@
       opacity:.22;
       pointer-events:none;
     }
-
     .stage-inner{
       position:relative;
       height:100%;
@@ -494,7 +506,6 @@
       grid-template-rows: auto 1fr auto;
       gap: 14px;
     }
-
     .stage-head{
       display:flex;
       align-items:flex-start;
@@ -517,7 +528,6 @@
       max-width: 48ch;
       line-height:1.5;
     }
-
     .badge{
       display:inline-flex;
       align-items:center;
@@ -542,14 +552,12 @@
       text-transform: uppercase;
     }
 
-    /* Portal + alphabet wall */
     .portal-area{
       display:grid;
       grid-template-columns: 1fr;
       gap: 14px;
       align-items:stretch;
     }
-
     .portal{
       border-radius: 20px;
       border: 1px solid rgba(255,255,255,.12);
@@ -574,8 +582,7 @@
     .wall{
       border-radius: 20px;
       border: 1px solid rgba(255,255,255,.12);
-      background:
-        linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
       overflow:hidden;
       padding: 14px;
       position:relative;
@@ -691,84 +698,104 @@
     }
     .ghost:active{ transform: translateY(1px) scale(.99); }
 
-    /* Sections */
-    section{
-      max-width: var(--max);
-      margin: 0 auto;
-      padding: 22px 18px;
-    }
-
-    .split{
-      display:grid;
-      grid-template-columns: 1fr;
-      gap: 14px;
-      align-items:start;
-    }
-
-    .section-title{
-      margin:0;
-      font-family:"Cinzel", serif;
-      text-transform: uppercase;
-      letter-spacing:.16em;
-      font-weight: 800;
-      font-size: clamp(18px, 2.4vw, 28px);
-      line-height: 1.1;
-    }
-    .section-lead{
-      margin: 10px 0 0;
-      color: var(--muted);
-      line-height: 1.65;
-      max-width: 68ch;
-    }
-
-    .feature-lines{
+    /* Characters page: gallery list (cards allowed because it's a list) */
+    .gallery{
       margin-top: 16px;
       display:grid;
+      grid-template-columns: 1fr;
       gap: 12px;
     }
-    .line{
-      padding: 14px 14px;
-      border-radius: var(--r-md);
+    .char{
+      border-radius: var(--r-lg);
       border: 1px solid rgba(255,255,255,.12);
       background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
       box-shadow: var(--shadow2);
-      position:relative;
       overflow:hidden;
+      position:relative;
+      display:grid;
+      grid-template-columns: 1fr;
     }
-    .line::before{
+    .char::before{
       content:"";
-      position:absolute;
-      inset:-30%;
+      position:absolute; inset:-30%;
       background: radial-gradient(circle at 20% 40%, rgba(56,246,255,.12), transparent 55%),
                   radial-gradient(circle at 70% 55%, rgba(193,10,43,.14), transparent 58%);
-      opacity:.85;
-      filter: blur(10px);
+      filter: blur(12px);
+      opacity:.8;
     }
-    .line > *{ position:relative; }
-    .line h3{
+    .char > *{ position:relative; }
+    .char-top{
+      padding: 14px 14px 10px;
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap: 10px;
+    }
+    .char h3{
       margin:0 0 6px;
       font-family:"Cinzel", serif;
-      letter-spacing:.14em;
       text-transform: uppercase;
-      font-size: 13px;
+      letter-spacing:.14em;
+      font-size: 14px;
     }
-    .line p{
+    .char p{
       margin:0;
       color: var(--muted);
       line-height: 1.65;
       font-size: 14px;
+      max-width: 70ch;
+    }
+    .tag{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding: 8px 10px;
+      border-radius: 999px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(0,0,0,.22);
+      color: rgba(243,238,251,.72);
+      letter-spacing:.12em;
+      text-transform: uppercase;
+      font-size: 11px;
+      white-space:nowrap;
+    }
+    .sig{
+      padding: 0 14px 14px;
+      display:grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+    .sig .bar{
+      height: 12px;
+      border-radius: 999px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(0,0,0,.18);
+      overflow:hidden;
+    }
+    .sig .bar i{
+      display:block; height:100%;
+      width: 56%;
+      border-radius:999px;
+      background: linear-gradient(90deg, rgba(56,246,255,.85), rgba(193,10,43,.85));
+      box-shadow: 0 0 22px rgba(56,246,255,.16);
+    }
+    .sig small{
+      color: rgba(243,238,251,.62);
+      letter-spacing:.10em;
+      text-transform: uppercase;
+      font-size: 11px;
     }
 
-    /* Timeline: not cards, but a rail */
-    .timeline{
-      margin-top: 18px;
+    /* Locations page: "dossier" rail (not a card grid) */
+    .rail{
+      margin-top: 16px;
       border-radius: var(--r-lg);
       border: 1px solid rgba(255,255,255,.12);
       background: rgba(255,255,255,.03);
       overflow:hidden;
       position:relative;
     }
-    .timeline::before{
+    .rail::before{
       content:"";
       position:absolute;
       left: 22px; top: 18px; bottom: 18px;
@@ -776,18 +803,16 @@
       background: linear-gradient(180deg, rgba(56,246,255,.55), rgba(193,10,43,.55));
       opacity:.55;
     }
-    .beat{
+    .entry{
       display:grid;
       grid-template-columns: 46px 1fr;
       gap: 12px;
       padding: 16px 16px 16px 10px;
       border-top: 1px solid rgba(255,255,255,.08);
     }
-    .beat:first-child{ border-top:none; }
+    .entry:first-child{ border-top:none; }
     .node{
-      position:relative;
-      display:grid;
-      place-items:center;
+      display:grid; place-items:center;
     }
     .node i{
       width: 14px; height: 14px;
@@ -796,42 +821,36 @@
       box-shadow: 0 0 0 6px rgba(56,246,255,.09), 0 0 22px rgba(193,10,43,.14);
       border: 1px solid rgba(255,255,255,.18);
     }
-    .beat h4{
+    .entry h4{
       margin:0;
       font-family:"Cinzel", serif;
       text-transform: uppercase;
       letter-spacing:.14em;
       font-size: 13px;
     }
-    .beat p{
+    .entry p{
       margin: 6px 0 0;
       color: var(--muted);
       line-height: 1.65;
       font-size: 14px;
-      max-width: 70ch;
+      max-width: 72ch;
     }
 
-    /* CTA strip */
-    .cta{
-      padding: 22px 18px 44px;
-    }
-    .cta-inner{
-      max-width: var(--max);
-      margin:0 auto;
+    /* Contact page: form */
+    .panel{
+      margin-top: 16px;
       border-radius: var(--r-lg);
       border: 1px solid rgba(255,255,255,.12);
       background:
-        radial-gradient(700px 360px at 10% 30%, rgba(193,10,43,.22), transparent 60%),
-        radial-gradient(780px 420px at 90% 70%, rgba(56,246,255,.14), transparent 65%),
+        radial-gradient(700px 360px at 10% 30%, rgba(193,10,43,.18), transparent 60%),
+        radial-gradient(780px 420px at 90% 70%, rgba(56,246,255,.12), transparent 65%),
         linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.02));
       box-shadow: var(--shadow);
-      padding: 18px;
-      display:grid;
-      gap: 14px;
+      padding: 16px;
       overflow:hidden;
       position:relative;
     }
-    .cta-inner::before{
+    .panel::before{
       content:"";
       position:absolute;
       inset:-40%;
@@ -839,37 +858,18 @@
         conic-gradient(from 120deg, transparent 0 70%, rgba(56,246,255,.18) 80%, transparent 92%),
         conic-gradient(from 300deg, transparent 0 75%, rgba(193,10,43,.22) 82%, transparent 95%);
       filter: blur(18px);
-      opacity:.65;
+      opacity:.55;
       animation: drift 10s linear infinite;
     }
     @keyframes drift{ to{ transform: rotate(360deg); } }
-    .cta-inner > *{ position:relative; }
-
-    .cta h2{
-      margin:0;
-      font-family:"Cinzel", serif;
-      text-transform: uppercase;
-      letter-spacing:.14em;
-      font-weight: 800;
-      font-size: clamp(18px, 3vw, 34px);
-      line-height: 1.05;
-    }
-    .cta p{
-      margin:0;
-      color: var(--muted);
-      line-height: 1.65;
-      max-width: 70ch;
-    }
+    .panel > *{ position:relative; }
 
     .form{
-      display:flex;
-      flex-wrap:wrap;
+      margin-top: 12px;
+      display:grid;
       gap: 10px;
-      margin-top: 10px;
-      align-items:center;
     }
     .field{
-      flex: 1 1 220px;
       display:flex;
       gap: 10px;
       align-items:center;
@@ -879,7 +879,7 @@
       padding: 12px 12px;
     }
     .field svg{ flex:0 0 auto; opacity:.75; }
-    .field input{
+    .field input, .field textarea{
       width:100%;
       border:none;
       outline:none;
@@ -887,8 +887,10 @@
       color: var(--ink);
       font-size: 14px;
       letter-spacing:.02em;
+      resize: vertical;
     }
-    .field input::placeholder{ color: rgba(243,238,251,.45); }
+    .field textarea{ min-height: 110px; }
+    .field input::placeholder, .field textarea::placeholder{ color: rgba(243,238,251,.45); }
 
     footer{
       max-width: var(--max);
@@ -908,7 +910,7 @@
       padding-bottom: 2px;
     }
 
-    /* Reveal animations */
+    /* Reveal */
     .reveal{
       opacity:0;
       transform: translateY(14px);
@@ -932,36 +934,27 @@
     .stagger.in > *:nth-child(4){ transition-delay: .30s; }
     .stagger.in > *:nth-child(5){ transition-delay: .38s; }
 
-    /* Responsive enhancements */
+    /* Page routing: show one "page" section at a time */
+    .page{ display:none; }
+    .page.active{ display:block; }
+
     @media (min-width: 780px){
       nav ul{ display:flex; }
       .menu{ display:none; }
       .mobile-panel{ display:none; }
 
-      .hero{
-        padding: 48px 18px 24px;
-        gap: 22px;
-      }
-      .hero-top{
-        grid-template-columns: 1.15fr .85fr;
-        gap: 22px;
-        align-items:stretch;
-      }
-      .portal-area{
-        grid-template-columns: 1.05fr .95fr;
-      }
+      .home-grid{ padding: 28px 18px 24px; gap: 22px; }
+      .home-top{ grid-template-columns: 1.15fr .85fr; gap: 22px; align-items:stretch; }
+      .portal-area{ grid-template-columns: 1.05fr .95fr; }
       .stage{ min-height: 430px; }
-      .split{
-        grid-template-columns: .95fr 1.05fr;
-        gap: 22px;
-        align-items:start;
-      }
-      .cta-inner{
-        grid-template-columns: 1.1fr .9fr;
-        align-items:center;
-        padding: 22px;
-      }
-      .form{ justify-content:flex-end; }
+
+      .gallery{ grid-template-columns: repeat(2, 1fr); }
+      .panel{ padding: 22px; }
+      .page-hero{ padding: 38px 18px 10px; }
+    }
+
+    @media (min-width: 1080px){
+      .gallery{ grid-template-columns: repeat(3, 1fr); }
     }
 
     @media (prefers-reduced-motion: reduce){
@@ -976,7 +969,6 @@
   <a class="skip" href="#content">Skip to content</a>
 
   <div class="atmosphere" aria-hidden="true">
-    <!-- Inline SVG atmosphere: spores + threads (no external images) -->
     <svg viewBox="0 0 1200 800" preserveAspectRatio="none">
       <defs>
         <radialGradient id="sp" cx="50%" cy="50%" r="50%">
@@ -989,17 +981,13 @@
           <stop offset=".55" stop-color="#c10a2b" stop-opacity=".25"/>
           <stop offset="1" stop-color="#38f6ff" stop-opacity=".05"/>
         </linearGradient>
-        <filter id="blur">
-          <feGaussianBlur stdDeviation="1.2" />
-        </filter>
+        <filter id="blur"><feGaussianBlur stdDeviation="1.2" /></filter>
       </defs>
 
-      <!-- Threads -->
       <path class="thread" d="M-40,160 C240,60 310,240 540,160 C750,90 860,220 1240,120" fill="none" stroke="url(#th)" stroke-width="2"/>
       <path class="thread" d="M-30,520 C220,420 340,600 560,520 C820,420 910,640 1240,540" fill="none" stroke="url(#th)" stroke-width="2" opacity=".7"/>
       <path class="thread" d="M220,820 C360,560 520,640 650,450 C790,240 980,260 1060,-60" fill="none" stroke="url(#th)" stroke-width="2" opacity=".55"/>
 
-      <!-- Spores -->
       <g class="spore" filter="url(#blur)">
         <circle cx="110" cy="120" r="26" fill="url(#sp)"/>
         <circle cx="260" cy="210" r="16" fill="url(#sp)"/>
@@ -1030,10 +1018,11 @@
 
         <nav aria-label="Site">
           <ul>
-            <li><a href="#about">About</a></li>
-            <li><a href="#signals">Signals</a></li>
-            <li><a href="#timeline">Timeline</a></li>
-            <li><a href="#contact">Join</a></li>
+            <!-- These links work as real pages if you split files OR as a single-page router with #hash -->
+            <li><a href="#/home" data-route="home">Home</a></li>
+            <li><a href="#/characters" data-route="characters">Characters</a></li>
+            <li><a href="#/locations" data-route="locations">Locations</a></li>
+            <li><a href="#/contact" data-route="contact">Contact</a></li>
           </ul>
         </nav>
 
@@ -1054,245 +1043,324 @@
       </div>
 
       <div class="mobile-panel" id="mobilePanel" aria-label="Mobile menu">
-        <a href="#about">About</a>
-        <a href="#signals">Signals</a>
-        <a href="#timeline">Timeline</a>
-        <a href="#contact">Join</a>
+        <a href="#/home" data-route="home">Home</a>
+        <a href="#/characters" data-route="characters">Characters</a>
+        <a href="#/locations" data-route="locations">Locations</a>
+        <a href="#/contact" data-route="contact">Contact</a>
       </div>
     </header>
 
     <main id="content">
-      <section class="hero">
-        <div class="hero-top">
-          <div class="reveal" data-reveal>
-            <div class="kicker">
-              <span class="dot" aria-hidden="true"></span>
-              <span>Live investigation feed • The Upside Down</span>
-            </div>
 
-            <h2 class="title">
-              <span class="glitch" data-text="Stranger Things">Stranger Things</span>
-            </h2>
-
-            <p class="lead">
-              A cinematic one-page site inspired by Hawkins’ neon hush and analog dread.
-              Track EMF spikes, decode the alphabet wall, and keep your flashlight close.
-            </p>
-
-            <div class="hero-actions stagger" data-reveal>
-              <a class="btn btn-primary" href="#signals">Enter the lab</a>
-              <button class="btn" id="lightsBtn" type="button">Toggle wall lights</button>
-              <span class="hint">
-                <span class="chip"><i aria-hidden="true"></i> no images</span>
-                <span>All visuals are CSS + inline SVG.</span>
-              </span>
-            </div>
-          </div>
-
-          <aside class="stage reveal" data-reveal aria-label="Interactive portal and alphabet wall">
-            <div class="stage-inner">
-              <div class="stage-head">
-                <div>
-                  <h2>Containment Window</h2>
-                  <p>
-                    Not a portal. Not a mirror. Just a boundary that should not be touched.
-                  </p>
-                </div>
-                <div class="badge" aria-label="Status badge">
-                  <strong id="statusWord">Stable</strong>
-                  <span id="statusSub">quiet</span>
-                </div>
+      <!-- PAGE 1: HOME -->
+      <section class="page active" data-page="home" aria-label="Home page">
+        <div class="home-grid">
+          <div class="home-top">
+            <div class="reveal" data-reveal>
+              <div class="kicker">
+                <span class="dot" aria-hidden="true"></span>
+                <span>Live investigation feed • The Upside Down</span>
               </div>
 
-              <div class="portal-area">
-                <div class="portal" aria-label="Portal visualization">
-                  <!-- Portal SVG -->
-                  <svg viewBox="0 0 520 240" role="img" aria-label="A stylized glowing portal">
-                    <defs>
-                      <radialGradient id="pg" cx="50%" cy="45%" r="68%">
-                        <stop offset="0" stop-color="#38f6ff" stop-opacity=".22"/>
-                        <stop offset=".55" stop-color="#c10a2b" stop-opacity=".22"/>
-                        <stop offset="1" stop-color="#000000" stop-opacity="0"/>
-                      </radialGradient>
-                      <linearGradient id="pl" x1="0" x2="1">
-                        <stop offset="0" stop-color="#38f6ff" stop-opacity=".8"/>
-                        <stop offset=".55" stop-color="#c10a2b" stop-opacity=".85"/>
-                        <stop offset="1" stop-color="#ff3b30" stop-opacity=".55"/>
-                      </linearGradient>
-                      <filter id="glow">
-                        <feGaussianBlur stdDeviation="3" result="b"/>
-                        <feMerge>
-                          <feMergeNode in="b"/>
-                          <feMergeNode in="SourceGraphic"/>
-                        </feMerge>
-                      </filter>
-                    </defs>
+              <h2 class="title">
+                <span class="glitch" data-text="Stranger Things">Stranger Things</span>
+              </h2>
 
-                    <rect x="0" y="0" width="520" height="240" fill="url(#pg)"/>
-                    <g class="ring" filter="url(#glow)">
-                      <path d="M260,22
-                               C355,22 436,74 468,120
-                               C436,166 355,218 260,218
-                               C165,218 84,166 52,120
-                               C84,74 165,22 260,22 Z"
-                            fill="none" stroke="url(#pl)" stroke-width="4" opacity=".9"/>
-                      <path d="M260,52
-                               C345,52 412,92 438,120
-                               C412,148 345,188 260,188
-                               C175,188 108,148 82,120
-                               C108,92 175,52 260,52 Z"
-                            fill="none" stroke="rgba(243,238,251,.35)" stroke-width="1.4" opacity=".7"/>
-                      <path d="M260,82
-                               C332,82 388,108 408,120
-                               C388,132 332,158 260,158
-                               C188,158 132,132 112,120
-                               C132,108 188,82 260,82 Z"
-                            fill="none" stroke="rgba(56,246,255,.26)" stroke-width="1.2" opacity=".9"/>
-                    </g>
+              <p class="lead">
+                A proper multi-section fan site foundation: Home, Characters, Locations, and Contact.
+                Use the navigation—these are separate “pages” inside one file (hash routing), or you can split them into 4 HTML files later.
+              </p>
 
-                    <!-- Tendrils -->
-                    <g opacity=".55">
-                      <path d="M92,120 C130,104 150,110 174,92" stroke="rgba(193,10,43,.55)" stroke-width="2" fill="none"/>
-                      <path d="M428,120 C392,102 370,114 346,92" stroke="rgba(56,246,255,.45)" stroke-width="2" fill="none"/>
-                      <path d="M260,214 C250,184 270,176 264,154" stroke="rgba(255,59,48,.42)" stroke-width="2" fill="none"/>
-                    </g>
-                  </svg>
-                </div>
-
-                <div class="wall" aria-label="Alphabet wall decoder">
-                  <div class="alphabet" id="alphabet" role="group" aria-label="Alphabet wall buttons">
-                    <!-- JS fills A-Z -->
-                  </div>
-
-                  <div class="message" aria-live="polite">
-                    <div class="label">
-                      <b>Decoded</b>
-                      <code id="decoded">PRESS LETTERS…</code>
-                    </div>
-                    <div class="mini-actions">
-                      <button class="ghost" id="backspaceBtn" type="button">Backspace</button>
-                      <button class="ghost" id="clearBtn" type="button">Clear</button>
-                      <button class="ghost" id="copyBtn" type="button">Copy</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center; justify-content:space-between;">
-                <span class="chip" title="Tip"><i aria-hidden="true"></i> Tip: press K I L L … (or don’t)</span>
-                <span style="color: rgba(243,238,251,.55); font-size: 12px; letter-spacing:.08em; text-transform: uppercase;">
-                  Signal noise: <span id="noise">low</span>
+              <div class="hero-actions stagger" data-reveal>
+                <a class="btn btn-primary" href="#/characters">Browse characters</a>
+                <button class="btn" id="lightsBtn" type="button">Toggle wall lights</button>
+                <span class="hint">
+                  <span class="chip"><i aria-hidden="true"></i> tip</span>
+                  <span>Type letters on your keyboard.</span>
                 </span>
               </div>
             </div>
-          </aside>
+
+            <aside class="stage reveal" data-reveal aria-label="Interactive portal and alphabet wall">
+              <div class="stage-inner">
+                <div class="stage-head">
+                  <div>
+                    <h2>Containment Window</h2>
+                    <p>Decode messages using the wall. The lab prefers short transmissions.</p>
+                  </div>
+                  <div class="badge" aria-label="Status badge">
+                    <strong id="statusWord">Stable</strong>
+                    <span id="statusSub">quiet</span>
+                  </div>
+                </div>
+
+                <div class="portal-area">
+                  <div class="portal" aria-label="Portal visualization">
+                    <svg viewBox="0 0 520 240" role="img" aria-label="A stylized glowing portal">
+                      <defs>
+                        <radialGradient id="pg" cx="50%" cy="45%" r="68%">
+                          <stop offset="0" stop-color="#38f6ff" stop-opacity=".22"/>
+                          <stop offset=".55" stop-color="#c10a2b" stop-opacity=".22"/>
+                          <stop offset="1" stop-color="#000000" stop-opacity="0"/>
+                        </radialGradient>
+                        <linearGradient id="pl" x1="0" x2="1">
+                          <stop offset="0" stop-color="#38f6ff" stop-opacity=".8"/>
+                          <stop offset=".55" stop-color="#c10a2b" stop-opacity=".85"/>
+                          <stop offset="1" stop-color="#ff3b30" stop-opacity=".55"/>
+                        </linearGradient>
+                        <filter id="glow">
+                          <feGaussianBlur stdDeviation="3" result="b"/>
+                          <feMerge>
+                            <feMergeNode in="b"/>
+                            <feMergeNode in="SourceGraphic"/>
+                          </feMerge>
+                        </filter>
+                      </defs>
+
+                      <rect x="0" y="0" width="520" height="240" fill="url(#pg)"/>
+                      <g class="ring" filter="url(#glow)">
+                        <path d="M260,22 C355,22 436,74 468,120 C436,166 355,218 260,218 C165,218 84,166 52,120 C84,74 165,22 260,22 Z"
+                              fill="none" stroke="url(#pl)" stroke-width="4" opacity=".9"/>
+                        <path d="M260,52 C345,52 412,92 438,120 C412,148 345,188 260,188 C175,188 108,148 82,120 C108,92 175,52 260,52 Z"
+                              fill="none" stroke="rgba(243,238,251,.35)" stroke-width="1.4" opacity=".7"/>
+                        <path d="M260,82 C332,82 388,108 408,120 C388,132 332,158 260,158 C188,158 132,132 112,120 C132,108 188,82 260,82 Z"
+                              fill="none" stroke="rgba(56,246,255,.26)" stroke-width="1.2" opacity=".9"/>
+                      </g>
+
+                      <g opacity=".55">
+                        <path d="M92,120 C130,104 150,110 174,92" stroke="rgba(193,10,43,.55)" stroke-width="2" fill="none"/>
+                        <path d="M428,120 C392,102 370,114 346,92" stroke="rgba(56,246,255,.45)" stroke-width="2" fill="none"/>
+                        <path d="M260,214 C250,184 270,176 264,154" stroke="rgba(255,59,48,.42)" stroke-width="2" fill="none"/>
+                      </g>
+                    </svg>
+                  </div>
+
+                  <div class="wall" aria-label="Alphabet wall decoder">
+                    <div class="alphabet" id="alphabet" role="group" aria-label="Alphabet wall buttons"></div>
+
+                    <div class="message" aria-live="polite">
+                      <div class="label">
+                        <b>Decoded</b>
+                        <code id="decoded">PRESS LETTERS…</code>
+                      </div>
+                      <div class="mini-actions">
+                        <button class="ghost" id="backspaceBtn" type="button">Backspace</button>
+                        <button class="ghost" id="clearBtn" type="button">Clear</button>
+                        <button class="ghost" id="copyBtn" type="button">Copy</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center; justify-content:space-between;">
+                  <span class="chip" title="Tip"><i aria-hidden="true"></i> Try: FRIENDS</span>
+                  <span style="color: rgba(243,238,251,.55); font-size: 12px; letter-spacing:.08em; text-transform: uppercase;">
+                    Signal noise: <span id="noise">low</span>
+                  </span>
+                </div>
+              </div>
+            </aside>
+          </div>
         </div>
+
+        <section class="reveal" data-reveal>
+          <h2 class="title" style="font-size: clamp(18px, 3vw, 34px); letter-spacing:.14em;">Start Here</h2>
+          <p class="subtitle">
+            Replace this content with your own: episode summaries, theories, fan art (inline), quotes, or a watch guide.
+            Use the other pages to organize everything.
+          </p>
+        </section>
       </section>
 
-      <section id="about" class="reveal" data-reveal>
-        <div class="split">
-          <div>
-            <h2 class="section-title">A site that feels like a VHS memory</h2>
-            <p class="section-lead">
-              The layout leans cinematic: big typographic hierarchy, wide negative space, and layered glass panels.
-              No image dependencies—just gradients, textures, and vector shapes.
+      <!-- PAGE 2: CHARACTERS -->
+      <section class="page" data-page="characters" aria-label="Characters page">
+        <div class="page-hero reveal" data-reveal>
+          <div class="kicker"><span class="dot" aria-hidden="true"></span><span>Personnel dossiers</span></div>
+          <h2 class="title"><span class="glitch" data-text="Characters">Characters</span></h2>
+          <p class="subtitle">A curated list. Swap names, descriptions, and “signal strength” to match your content.</p>
+        </div>
+
+        <section>
+          <div class="gallery reveal" data-reveal>
+            <article class="char">
+              <div class="char-top">
+                <div>
+                  <h3>Eleven</h3>
+                  <p>Psychokinetic abilities. Quiet intensity. A compass pointed at the impossible.</p>
+                </div>
+                <span class="tag">PSI</span>
+              </div>
+              <div class="sig">
+                <small>Signal strength</small>
+                <div class="bar" aria-hidden="true"><i style="width:88%"></i></div>
+              </div>
+            </article>
+
+            <article class="char">
+              <div class="char-top">
+                <div>
+                  <h3>Mike Wheeler</h3>
+                  <p>Leader energy, loyal to the core. Keeps the group stitched together.</p>
+                </div>
+                <span class="tag">Party</span>
+              </div>
+              <div class="sig">
+                <small>Signal strength</small>
+                <div class="bar" aria-hidden="true"><i style="width:62%"></i></div>
+              </div>
+            </article>
+
+            <article class="char">
+              <div class="char-top">
+                <div>
+                  <h3>Dustin Henderson</h3>
+                  <p>Curiosity + comedy + science. If it has teeth, he’ll try to befriend it.</p>
+                </div>
+                <span class="tag">Radio</span>
+              </div>
+              <div class="sig">
+                <small>Signal strength</small>
+                <div class="bar" aria-hidden="true"><i style="width:74%"></i></div>
+              </div>
+            </article>
+
+            <article class="char">
+              <div class="char-top">
+                <div>
+                  <h3>Lucas Sinclair</h3>
+                  <p>Practical thinker. Protective. Calls it out when the plan is nonsense.</p>
+                </div>
+                <span class="tag">Scout</span>
+              </div>
+              <div class="sig">
+                <small>Signal strength</small>
+                <div class="bar" aria-hidden="true"><i style="width:58%"></i></div>
+              </div>
+            </article>
+
+            <article class="char">
+              <div class="char-top">
+                <div>
+                  <h3>Max Mayfield</h3>
+                  <p>Edges first, trust later. A survivor’s honesty with a fighter’s heart.</p>
+                </div>
+                <span class="tag">Arcade</span>
+              </div>
+              <div class="sig">
+                <small>Signal strength</small>
+                <div class="bar" aria-hidden="true"><i style="width:69%"></i></div>
+              </div>
+            </article>
+
+            <article class="char">
+              <div class="char-top">
+                <div>
+                  <h3>Jim Hopper</h3>
+                  <p>Small-town sheriff, big-time grit. Looks like trouble, acts like a shield.</p>
+                </div>
+                <span class="tag">Sheriff</span>
+              </div>
+              <div class="sig">
+                <small>Signal strength</small>
+                <div class="bar" aria-hidden="true"><i style="width:72%"></i></div>
+              </div>
+            </article>
+          </div>
+        </section>
+      </section>
+
+      <!-- PAGE 3: LOCATIONS -->
+      <section class="page" data-page="locations" aria-label="Locations page">
+        <div class="page-hero reveal" data-reveal>
+          <div class="kicker"><span class="dot" aria-hidden="true"></span><span>Map fragments</span></div>
+          <h2 class="title"><span class="glitch" data-text="Locations">Locations</span></h2>
+          <p class="subtitle">A dossier-style rail for places: keep it readable, cinematic, and expandable.</p>
+        </div>
+
+        <section>
+          <div class="rail reveal" data-reveal aria-label="Locations rail">
+            <div class="entry">
+              <div class="node" aria-hidden="true"><i></i></div>
+              <div>
+                <h4>Hawkins Lab</h4>
+                <p>Clinical halls, locked doors, and questions that outnumber answers. Where the story bleeds through.</p>
+              </div>
+            </div>
+            <div class="entry">
+              <div class="node" aria-hidden="true"><i></i></div>
+              <div>
+                <h4>Byers House</h4>
+                <p>A home turned signal board. Familiar rooms, unfamiliar shadows. The walls remember.</p>
+              </div>
+            </div>
+            <div class="entry">
+              <div class="node" aria-hidden="true"><i></i></div>
+              <div>
+                <h4>Starcourt Mall</h4>
+                <p>Bright lights, loud music, and a sense that something beneath it all is listening.</p>
+              </div>
+            </div>
+            <div class="entry">
+              <div class="node" aria-hidden="true"><i></i></div>
+              <div>
+                <h4>The Upside Down</h4>
+                <p>A parallel ruin. Spore-filled air. Echoes of Hawkins, warped by hunger and cold.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </section>
+
+      <!-- PAGE 4: CONTACT -->
+      <section class="page" data-page="contact" aria-label="Contact page">
+        <div class="page-hero reveal" data-reveal>
+          <div class="kicker"><span class="dot" aria-hidden="true"></span><span>Transmission request</span></div>
+          <h2 class="title"><span class="glitch" data-text="Contact">Contact</span></h2>
+          <p class="subtitle">A clean contact form. Wire this to Formspree / Netlify Forms later if you want.</p>
+        </div>
+
+        <section>
+          <div class="panel reveal" data-reveal>
+            <h3 style="margin:0; font-family:'Cinzel',serif; letter-spacing:.14em; text-transform:uppercase; font-size:14px;">
+              Send a message
+            </h3>
+            <p style="margin:8px 0 0; color: var(--muted); line-height:1.65; max-width: 70ch;">
+              This demo doesn’t submit anywhere yet. It validates and shows a confirmation. You can connect it to a backend later.
             </p>
-            <div class="feature-lines stagger" data-reveal>
-              <div class="line">
-                <h3>Analog texture</h3>
-                <p>Film grain + scanlines in the background, kept subtle to avoid gimmicks.</p>
-              </div>
-              <div class="line">
-                <h3>Interactive wall</h3>
-                <p>Tap letters to compose a message. Copy, clear, or backspace—keyboard-friendly.</p>
-              </div>
-              <div class="line">
-                <h3>Scroll reveal</h3>
-                <p>Staggered motion using IntersectionObserver, with reduced-motion support.</p>
-              </div>
-            </div>
-          </div>
 
-          <div class="timeline" aria-label="Hawkins field notes" id="signals">
-            <div class="beat">
-              <div class="node" aria-hidden="true"><i></i></div>
-              <div>
-                <h4>Signal Pattern: Neon + Blood</h4>
-                <p>Cold cyan highlights against deep reds—like emergency lights bleeding through fog.</p>
+            <form class="form" id="contactForm">
+              <label class="field" aria-label="Your name">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M12 12a4.2 4.2 0 1 0 0-8.4A4.2 4.2 0 0 0 12 12Z" stroke="rgba(243,238,251,.75)" stroke-width="1.6"/>
+                  <path d="M4 20.4c1.8-4 5.1-6 8-6s6.2 2 8 6" stroke="rgba(243,238,251,.65)" stroke-width="1.6" stroke-linecap="round"/>
+                </svg>
+                <input name="name" autocomplete="name" placeholder="Your name" required />
+              </label>
+
+              <label class="field" aria-label="Email address">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M4 7.5C4 6.12 5.12 5 6.5 5h11C18.88 5 20 6.12 20 7.5v9C20 17.88 18.88 19 17.5 19h-11C5.12 19 4 17.88 4 16.5v-9Z" stroke="rgba(243,238,251,.75)" stroke-width="1.6"/>
+                  <path d="M5.2 7.2 12 12.1 18.8 7.2" stroke="rgba(243,238,251,.65)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <input name="email" type="email" autocomplete="email" placeholder="you@hawkins.local" required />
+              </label>
+
+              <label class="field" aria-label="Message">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M6 7.8h12M6 12h12M6 16.2h8" stroke="rgba(243,238,251,.7)" stroke-width="1.6" stroke-linecap="round"/>
+                </svg>
+                <textarea name="message" placeholder="Write your message…" required></textarea>
+              </label>
+
+              <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
+                <button class="btn btn-primary" type="submit">Send transmission</button>
+                <span id="contactStatus" style="color: rgba(243,238,251,.62); font-size: 12px; letter-spacing:.08em; text-transform: uppercase;"></span>
               </div>
-            </div>
-            <div class="beat">
-              <div class="node" aria-hidden="true"><i></i></div>
-              <div>
-                <h4>Containment Principle</h4>
-                <p>Panels are translucent, not “cardy.” Typography and rhythm drive the structure.</p>
-              </div>
-            </div>
-            <div class="beat">
-              <div class="node" aria-hidden="true"><i></i></div>
-              <div>
-                <h4>EMF Meter</h4>
-                <p>Live UI feedback: the meter drifts, and the Protocol button briefly “spikes” it.</p>
-              </div>
-            </div>
+            </form>
           </div>
-        </div>
+        </section>
       </section>
 
-      <section id="timeline" class="reveal" data-reveal>
-        <h2 class="section-title">Investigation Timeline</h2>
-        <p class="section-lead">
-          A simple narrative rail for your content: episodes, characters, or events. Replace the copy with your own.
-        </p>
-
-        <div class="timeline" aria-label="Timeline rail">
-          <div class="beat">
-            <div class="node" aria-hidden="true"><i></i></div>
-            <div>
-              <h4>Day 01 — The hum returns</h4>
-              <p>Power flickers. Radio static spikes. The woods feel too quiet for summer.</p>
-            </div>
-          </div>
-          <div class="beat">
-            <div class="node" aria-hidden="true"><i></i></div>
-            <div>
-              <h4>Day 03 — Alphabet wall test</h4>
-              <p>Lights respond to touch and intent. Messages come through like breath on glass.</p>
-            </div>
-          </div>
-          <div class="beat">
-            <div class="node" aria-hidden="true"><i></i></div>
-            <div>
-              <h4>Day 07 — Containment breach (minor)</h4>
-              <p>Unconfirmed tendrils detected. Recommend: distance, silence, and a second flashlight.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="contact" class="cta reveal" data-reveal>
-        <div class="cta-inner">
-          <div>
-            <h2>Join the Hawkins Archive</h2>
-            <p>
-              Want this turned into a multi-page fan site (episodes, characters, locations) or a portfolio-style tribute?
-              Drop your email and your preferred sections—I'll help structure it.
-            </p>
-          </div>
-
-          <form class="form" onsubmit="event.preventDefault(); window.dispatchEvent(new CustomEvent('join'));"
-                aria-label="Join form">
-            <label class="field" aria-label="Email address">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path d="M4 7.5C4 6.12 5.12 5 6.5 5h11C18.88 5 20 6.12 20 7.5v9C20 17.88 18.88 19 17.5 19h-11C5.12 19 4 17.88 4 16.5v-9Z" stroke="rgba(243,238,251,.75)" stroke-width="1.6"/>
-                <path d="M5.2 7.2 12 12.1 18.8 7.2" stroke="rgba(243,238,251,.65)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-              <input id="email" type="email" placeholder="you@hawkins.local" autocomplete="email" required />
-            </label>
-            <button class="btn btn-primary" type="submit">Request access</button>
-          </form>
-        </div>
-      </section>
     </main>
 
     <footer>
@@ -1301,23 +1369,24 @@
           Hawkins Archive
         </div>
         <div style="margin-top:6px; max-width: 70ch;">
-          Fan-made UI concept. Replace text, add sections, and make it yours.
+          This file includes 4 pages via hash routing. If you want “real” 4 separate HTML files, tell me and I’ll split it cleanly.
         </div>
       </div>
       <div style="display:flex; gap:14px; align-items:center; flex-wrap:wrap;">
-        <a href="#content">Back to top</a>
+        <a href="#/home">Back to top</a>
         <span aria-hidden="true" style="opacity:.35;">•</span>
-        <span>Built with HTML + CSS + JS</span>
+        <span>HTML + CSS + JS</span>
       </div>
     </footer>
   </div>
 
   <script>
-    // Mobile menu toggle
+    // Mobile menu
     const menuBtn = document.getElementById('menuBtn');
     const mobilePanel = document.getElementById('mobilePanel');
 
     function setMenu(open){
+      if(!menuBtn || !mobilePanel) return;
       menuBtn.setAttribute('aria-expanded', String(open));
       mobilePanel.style.maxHeight = open ? (mobilePanel.scrollHeight + 'px') : '0px';
     }
@@ -1325,11 +1394,64 @@
       const open = menuBtn.getAttribute('aria-expanded') === 'true';
       setMenu(!open);
     });
-    mobilePanel?.querySelectorAll('a').forEach(a => {
-      a.addEventListener('click', () => setMenu(false));
-    });
+    mobilePanel?.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setMenu(false)));
 
-    // Reveal on scroll
+    // Routing: #/home, #/characters, #/locations, #/contact
+    const pages = [...document.querySelectorAll('.page[data-page]')];
+    const navLinks = [...document.querySelectorAll('[data-route]')];
+
+    function getRoute(){
+      const h = location.hash || '#/home';
+      const match = h.match(/^#\/([a-z-]+)/i);
+      return (match?.[1] || 'home').toLowerCase();
+    }
+
+    function setActivePage(route){
+      let found = false;
+      pages.forEach(p => {
+        const on = p.dataset.page === route;
+        p.classList.toggle('active', on);
+        if(on) found = true;
+      });
+      if(!found){
+        // fallback
+        pages.forEach(p => p.classList.toggle('active', p.dataset.page === 'home'));
+        route = 'home';
+      }
+
+      navLinks.forEach(a => {
+        const on = a.dataset.route === route;
+        a.toggleAttribute('aria-current', on);
+        if(on) a.setAttribute('aria-current','page');
+      });
+
+      // close menu on navigation
+      setMenu(false);
+
+      // scroll to top for "page" feel
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+
+      // re-trigger reveals for newly shown page
+      requestAnimationFrame(() => {
+        const visibleReveals = document.querySelectorAll('.page.active [data-reveal]');
+        visibleReveals.forEach(el => {
+          // reset then reveal
+          el.classList.remove('in');
+        });
+        requestAnimationFrame(() => {
+          visibleReveals.forEach(el => el.classList.add('in'));
+          const staggers = document.querySelectorAll('.page.active .stagger');
+          staggers.forEach(s => s.classList.add('in'));
+        });
+      });
+    }
+
+    window.addEventListener('hashchange', () => setActivePage(getRoute()));
+    // Initial route
+    if(!location.hash) location.hash = '#/home';
+    setActivePage(getRoute());
+
+    // Scroll reveal (for first load; route changes also force "in")
     const revealEls = [...document.querySelectorAll('[data-reveal]')];
     const io = new IntersectionObserver((entries) => {
       entries.forEach(e => {
@@ -1340,7 +1462,6 @@
         }
       });
     }, { threshold: 0.12 });
-
     revealEls.forEach(el => io.observe(el));
 
     // Alphabet wall
@@ -1359,6 +1480,7 @@
     const wallButtons = [];
 
     function renderDecoded(){
+      if(!decodedEl) return;
       decodedEl.textContent = message.length ? message : "PRESS LETTERS…";
       decodedEl.title = message;
     }
@@ -1367,29 +1489,28 @@
       message += ch;
       renderDecoded();
 
-      // Briefly set pressed state for the tapped button to mimic "lights"
       const btn = wallButtons.find(b => b.dataset.letter === ch);
       if(btn){
         btn.setAttribute('aria-pressed', 'true');
         setTimeout(() => btn.setAttribute('aria-pressed', 'false'), 260);
       }
 
-      // Noise label
-      const len = message.length;
-      const level = len < 6 ? "low" : len < 14 ? "rising" : len < 22 ? "high" : "severe";
-      noiseEl.textContent = level;
+      if(noiseEl){
+        const len = message.length;
+        noiseEl.textContent = len < 6 ? "low" : len < 14 ? "rising" : len < 22 ? "high" : "severe";
+      }
     }
 
     function buildAlphabet(){
       if(!alphabetRoot) return;
       alphabetRoot.innerHTML = "";
-      letters.forEach((ch, idx) => {
+      wallButtons.length = 0;
+      letters.forEach((ch) => {
         const b = document.createElement('button');
         b.type = "button";
         b.textContent = ch;
         b.dataset.letter = ch;
         b.setAttribute('aria-pressed', 'false');
-        b.style.transitionDelay = (idx * 6) + "ms";
         b.addEventListener('click', () => {
           if(!lightsOn) return;
           pressLetter(ch);
@@ -1401,8 +1522,10 @@
     buildAlphabet();
     renderDecoded();
 
-    // Keyboard support
     window.addEventListener('keydown', (e) => {
+      // Only allow typing when on Home page (so forms work on Contact page)
+      if(getRoute() !== 'home') return;
+
       const key = e.key.toUpperCase();
       if(key.length === 1 && key >= 'A' && key <= 'Z'){
         if(lightsOn) pressLetter(key);
@@ -1422,7 +1545,7 @@
 
     clearBtn?.addEventListener('click', () => {
       message = "";
-      noiseEl.textContent = "low";
+      if(noiseEl) noiseEl.textContent = "low";
       renderDecoded();
     });
 
@@ -1433,7 +1556,7 @@
         await navigator.clipboard.writeText(text);
         copyBtn.textContent = "Copied";
         setTimeout(() => copyBtn.textContent = "Copy", 900);
-      }catch(err){
+      }catch{
         copyBtn.textContent = "Copy failed";
         setTimeout(() => copyBtn.textContent = "Copy", 900);
       }
@@ -1442,9 +1565,7 @@
     lightsBtn?.addEventListener('click', () => {
       lightsOn = !lightsOn;
       lightsBtn.textContent = lightsOn ? "Toggle wall lights" : "Wall lights: off";
-      wallButtons.forEach(b => {
-        b.style.opacity = lightsOn ? "1" : ".45";
-      });
+      wallButtons.forEach(b => b.style.opacity = lightsOn ? "1" : ".45");
     });
 
     // EMF meter drift + protocol spike
@@ -1453,23 +1574,22 @@
     const statusWord = document.getElementById('statusWord');
     const statusSub = document.getElementById('statusSub');
 
-    let emf = 0.34; // 0..1
+    let emf = 0.34;
 
     function setEMF(v){
       emf = Math.max(0.06, Math.min(0.98, v));
       if(emfBar) emfBar.style.width = (emf * 100).toFixed(0) + "%";
 
-      // Status mapping
-      const s =
-        emf < 0.28 ? ["Stable","quiet"] :
-        emf < 0.52 ? ["Unclear","static"] :
-        emf < 0.74 ? ["Active","nearby"] :
-        ["Critical","breach"];
-
-      statusWord.textContent = s[0];
-      statusSub.textContent = s[1];
+      if(statusWord && statusSub){
+        const s =
+          emf < 0.28 ? ["Stable","quiet"] :
+          emf < 0.52 ? ["Unclear","static"] :
+          emf < 0.74 ? ["Active","nearby"] :
+          ["Critical","breach"];
+        statusWord.textContent = s[0];
+        statusSub.textContent = s[1];
+      }
     }
-
     setEMF(emf);
 
     function drift(){
@@ -1481,13 +1601,11 @@
     drift();
 
     panicBtn?.addEventListener('click', () => {
-      // Spike quickly, then decay
       setEMF(Math.min(0.98, emf + 0.48));
       panicBtn.textContent = "Sealed";
       setTimeout(() => panicBtn.textContent = "Protocol", 1100);
 
-      // Subtle "shake" feedback on the stage
-      const stage = document.querySelector('.stage');
+      const stage = document.querySelector('.page.active .stage');
       if(stage){
         stage.animate([
           { transform: 'translateY(0px) rotate(0deg)' },
@@ -1498,24 +1616,28 @@
       }
     });
 
-    // Join form feedback
-    window.addEventListener('join', () => {
-      const email = document.getElementById('email');
-      const val = (email?.value || "").trim();
-      if(!val) return;
+    // Contact form demo
+    const contactForm = document.getElementById('contactForm');
+    const contactStatus = document.getElementById('contactStatus');
 
-      message = "WELCOME " + val.split("@")[0].toUpperCase().replace(/[^A-Z]/g,"").slice(0,10);
-      renderDecoded();
+    contactForm?.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const fd = new FormData(contactForm);
+      const name = (fd.get('name') || '').toString().trim();
+      if(!name) return;
 
-      noiseEl.textContent = "rising";
-      setEMF(Math.min(0.98, emf + 0.22));
-      if(email) email.value = "";
+      if(contactStatus){
+        contactStatus.textContent = "Transmission queued • check back soon";
+        setTimeout(() => contactStatus.textContent = "", 2600);
+      }
+      contactForm.reset();
+      setEMF(Math.min(0.98, emf + 0.18));
     });
 
-    // Ensure mobile panel height recalculates on resize
+    // Recalc mobile panel height on resize
     window.addEventListener('resize', () => {
       const open = menuBtn?.getAttribute('aria-expanded') === 'true';
-      if(open) mobilePanel.style.maxHeight = mobilePanel.scrollHeight + 'px';
+      if(open && mobilePanel) mobilePanel.style.maxHeight = mobilePanel.scrollHeight + 'px';
     });
   </script>
 </body>
