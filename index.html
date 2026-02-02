@@ -2,965 +2,896 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#0b0712" />
-  <title>Hawkins Archive — Stranger Things (4 Pages)</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="color-scheme" content="dark light" />
+  <title>Leaf Signal — A Naruto Fanpage</title>
+  <meta name="description" content="Leaf Signal is a stylish Naruto fanpage featuring arcs, clans, jutsu lore, and a fan-made timeline. Built with bold typography, animated ink patterns, and scroll reveals." />
 
-  <!-- Fonts: cinematic display + readable grotesk -->
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;800&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 
   <style>
     :root{
-      --bg: #07060b;
-      --ink: #f3eefb;
-      --muted: rgba(243,238,251,.72);
-      --dim: rgba(243,238,251,.52);
+      /* Aesthetic: "Ink & Ember" — parchment neutrals + sumi ink + ember orange */
+      --bg0:#07080a;
+      --bg1:#0c0f14;
+      --ink:#e9ecf2;
+      --muted:#b7bdc9;
+      --faint:#7d8492;
 
-      --blood: #c10a2b;
-      --ember: #ff3b30;
-      --neon: #38f6ff;
-      --acid: #b6ff5f;
+      --ember:#ff4d2e;
+      --ember2:#ff8a3d;
+      --leaf:#4ee6a9;
+      --violet:#7b61ff;
 
-      --panel: rgba(255,255,255,.06);
-      --panel2: rgba(255,255,255,.035);
-      --stroke: rgba(255,255,255,.14);
-      --stroke2: rgba(255,255,255,.10);
+      --paper:#f3efe7;
+      --paper-ink:#101215;
 
-      --shadow: 0 18px 60px rgba(0,0,0,.55);
-      --shadow2: 0 10px 28px rgba(0,0,0,.55);
+      --line: rgba(255,255,255,.12);
+      --line2: rgba(255,255,255,.08);
+      --shadow: 0 18px 50px rgba(0,0,0,.45);
+      --soft: 0 10px 30px rgba(0,0,0,.35);
 
-      --r-sm: 14px;
-      --r-md: 18px;
-      --r-lg: 26px;
+      --radius-xl: 26px;
+      --radius-lg: 18px;
+      --radius-md: 14px;
 
       --max: 1180px;
-      --ease: cubic-bezier(.2,.85,.2,1);
+
+      --h1: clamp(2.4rem, 4.6vw, 4.2rem);
+      --h2: clamp(1.55rem, 2.4vw, 2.2rem);
+      --h3: clamp(1.1rem, 1.5vw, 1.35rem);
+      --p: clamp(.98rem, 1.05vw, 1.06rem);
+
+      --tracking-tight: -0.03em;
+      --tracking-wide: 0.12em;
+
+      --ease: cubic-bezier(.2,.9,.2,1);
     }
 
-    *{ box-sizing:border-box; }
-    html,body{ height:100%; }
+    *{box-sizing:border-box}
+    html,body{height:100%}
     body{
       margin:0;
-      color:var(--ink);
-      background: radial-gradient(1200px 700px at 70% 0%, rgba(193,10,43,.18), transparent 65%),
-                  radial-gradient(900px 500px at 10% 15%, rgba(56,246,255,.12), transparent 60%),
-                  radial-gradient(1200px 900px at 40% 120%, rgba(255,59,48,.10), transparent 55%),
-                  linear-gradient(180deg, #05040a 0%, #07060b 40%, #04030a 100%);
-      font-family: "IBM Plex Sans", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      background:
+        radial-gradient(1400px 900px at 70% -10%, rgba(255,77,46,.22), transparent 60%),
+        radial-gradient(1200px 900px at 0% 20%, rgba(78,230,169,.16), transparent 55%),
+        radial-gradient(900px 700px at 90% 60%, rgba(123,97,255,.12), transparent 55%),
+        linear-gradient(180deg, var(--bg0), var(--bg1));
+      color: var(--ink);
+      font-family: "IBM Plex Sans", system-ui, -apple-system, Segoe UI, sans-serif;
+      line-height:1.55;
       overflow-x:hidden;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
     }
 
-    /* Subtle film grain */
+    /* Subtle paper fiber overlay (CSS only) */
     body::before{
       content:"";
-      position:fixed;
-      inset:0;
+      position:fixed; inset:0;
       pointer-events:none;
-      opacity:.11;
-      mix-blend-mode: overlay;
       background:
-        repeating-linear-gradient(0deg, rgba(255,255,255,.035) 0 1px, transparent 1px 3px),
-        repeating-linear-gradient(90deg, rgba(255,255,255,.02) 0 1px, transparent 1px 4px);
-      filter: blur(.1px);
+        radial-gradient(circle at 10% 20%, rgba(255,255,255,.05), transparent 35%),
+        radial-gradient(circle at 80% 10%, rgba(255,255,255,.04), transparent 40%),
+        radial-gradient(circle at 20% 90%, rgba(255,255,255,.03), transparent 45%),
+        repeating-linear-gradient(115deg, rgba(255,255,255,.03) 0 1px, transparent 1px 8px);
+      mix-blend-mode: overlay;
+      opacity:.22;
+      filter: blur(.2px);
       z-index:0;
     }
 
-    .atmosphere{
-      position:fixed;
-      inset:0;
-      pointer-events:none;
-      z-index:0;
-      opacity:.85;
-    }
-    .atmosphere svg{ width:100%; height:100%; display:block; }
-    .atmosphere .spore{ opacity:.22; }
-    .atmosphere .thread{ opacity:.16; filter: drop-shadow(0 0 12px rgba(193,10,43,.55)); }
+    a{color:inherit}
+    .wrap{max-width:var(--max); margin:0 auto; padding:0 20px}
 
-    a{ color:inherit; text-decoration:none; }
-    button{ font:inherit; color:inherit; }
-    .wrap{ position:relative; z-index:1; }
-
+    /* Skip link */
     .skip{
-      position:absolute;
-      left:12px; top:12px;
+      position:absolute; left:-999px; top:10px;
+      background: var(--paper);
+      color: var(--paper-ink);
       padding:10px 12px;
-      border-radius:12px;
-      background:rgba(0,0,0,.75);
-      border:1px solid var(--stroke);
-      transform: translateY(-140%);
-      transition: transform .25s var(--ease);
-      z-index:50;
+      border-radius:10px;
+      z-index:9999;
     }
-    .skip:focus{ transform: translateY(0); outline:none; }
+    .skip:focus{left:12px}
 
+    /* Header */
     header{
-      position:sticky;
-      top:0;
-      z-index:30;
-      backdrop-filter: blur(14px);
-      background: linear-gradient(180deg, rgba(7,6,11,.78), rgba(7,6,11,.40));
-      border-bottom: 1px solid rgba(255,255,255,.08);
+      position:sticky; top:0; z-index:50;
+      backdrop-filter: blur(12px);
+      background: linear-gradient(180deg, rgba(10,12,16,.78), rgba(10,12,16,.46));
+      border-bottom: 1px solid var(--line2);
     }
-
     .nav{
-      max-width: var(--max);
-      margin:0 auto;
-      padding: 14px 18px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:14px;
+      display:flex; align-items:center; justify-content:space-between;
+      padding: 14px 0;
+      gap:16px;
     }
 
     .brand{
-      display:flex;
-      align-items:baseline;
-      gap:10px;
-      min-width: 180px;
+      display:flex; align-items:center; gap:12px; min-width: 220px;
+      text-decoration:none;
     }
-    .brand .logo{
-      width:42px; height:42px;
-      border-radius: 14px;
+    .mark{
+      width:42px; height:42px; border-radius:14px;
       background:
-        radial-gradient(16px 16px at 30% 30%, rgba(56,246,255,.45), transparent 60%),
-        radial-gradient(22px 22px at 70% 70%, rgba(193,10,43,.55), transparent 58%),
-        linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.02));
-      border:1px solid rgba(255,255,255,.12);
-      box-shadow: 0 14px 30px rgba(0,0,0,.45);
+        radial-gradient(18px 18px at 30% 30%, rgba(255,255,255,.25), transparent 60%),
+        radial-gradient(24px 24px at 75% 60%, rgba(255,255,255,.12), transparent 65%),
+        linear-gradient(135deg, rgba(255,77,46,.9), rgba(255,138,61,.85));
+      box-shadow: 0 10px 30px rgba(255,77,46,.18);
       position:relative;
       overflow:hidden;
     }
-    .brand .logo::after{
+    /* leaf swirl hint with SVG-like CSS */
+    .mark::after{
       content:"";
-      position:absolute;
-      inset:-40%;
-      background: conic-gradient(from 210deg, transparent 0 70%, rgba(193,10,43,.45) 80%, transparent 92%);
-      animation: spin 7.5s linear infinite;
-      opacity:.55;
+      position:absolute; inset:-2px;
+      background:
+        radial-gradient(circle at 46% 54%, rgba(7,8,10,.0) 0 34%, rgba(7,8,10,.65) 35% 37%, transparent 38%),
+        radial-gradient(circle at 54% 48%, transparent 0 44%, rgba(7,8,10,.70) 45% 47%, transparent 48%),
+        conic-gradient(from 210deg at 50% 50%, rgba(7,8,10,.0) 0 40%, rgba(7,8,10,.7) 40% 46%, rgba(7,8,10,.0) 46% 100%);
+      opacity:.9;
+      filter: blur(.2px);
+      transform: rotate(8deg);
     }
-    @keyframes spin { to{ transform: rotate(360deg);} }
-
-    .brand h1{
-      margin:0;
-      font-family: "Cinzel", serif;
-      letter-spacing: .18em;
-      text-transform: uppercase;
-      font-weight: 700;
-      font-size: 14px;
-      line-height: 1;
+    .brand strong{
+      font-family:"Unbounded", ui-sans-serif;
+      letter-spacing: var(--tracking-tight);
+      font-weight:800;
+      font-size: 1.05rem;
+      line-height:1.05;
+      display:block;
     }
-    .brand p{
-      margin:0;
-      font-size: 12px;
-      color: var(--dim);
-      letter-spacing: .08em;
-      text-transform: uppercase;
+    .brand span{
+      display:block;
+      color: var(--muted);
+      font-size:.82rem;
+      letter-spacing:.02em;
+      margin-top:2px;
     }
 
     nav ul{
-      list-style:none;
-      margin:0;
-      padding:0;
-      display:none;
-      gap:20px;
+      display:flex; list-style:none; padding:0; margin:0;
+      gap: 18px;
       align-items:center;
     }
     nav a{
-      position:relative;
-      padding:10px 8px;
-      font-size: 13px;
-      letter-spacing:.12em;
-      text-transform: uppercase;
+      text-decoration:none;
       color: var(--muted);
-      transition: color .2s var(--ease);
+      font-size:.95rem;
+      padding:10px 10px;
+      border-radius:12px;
+      transition: transform .2s var(--ease), background .2s var(--ease), color .2s var(--ease);
+      position:relative;
     }
-    nav a::after{
-      content:"";
-      position:absolute;
-      left:8px; right:8px; bottom:6px;
-      height:1px;
-      background: linear-gradient(90deg, transparent, rgba(56,246,255,.75), transparent);
-      transform: scaleX(0);
-      transform-origin:center;
-      transition: transform .26s var(--ease);
-      opacity:.9;
+    nav a:hover{
+      color: var(--ink);
+      background: rgba(255,255,255,.06);
+      transform: translateY(-1px);
     }
-    nav a:hover{ color: var(--ink); }
-    nav a:hover::after{ transform: scaleX(1); }
-    nav a[aria-current="page"]{ color: var(--ink); }
-    nav a[aria-current="page"]::after{ transform: scaleX(1); opacity: .95; }
+    nav a[aria-current="page"]{
+      color: var(--ink);
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.10);
+    }
 
     .nav-actions{
-      display:flex;
-      align-items:center;
-      gap:10px;
+      display:flex; align-items:center; gap:10px;
+      min-width: 240px;
+      justify-content:flex-end;
     }
 
-    .pill{
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-      padding: 10px 12px;
+    .chip{
+      display:inline-flex; align-items:center; gap:10px;
+      padding:10px 12px;
       border-radius: 999px;
-      border:1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.04);
-      box-shadow: 0 12px 30px rgba(0,0,0,.25);
-    }
-    .pill small{
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.06);
       color: var(--muted);
-      letter-spacing:.12em;
-      text-transform: uppercase;
-      font-size: 11px;
+      font-size:.92rem;
+      box-shadow: 0 12px 28px rgba(0,0,0,.22);
     }
-    .meter{
-      width:90px; height:10px;
-      border-radius: 999px;
-      background: rgba(255,255,255,.08);
-      overflow:hidden;
-      border:1px solid rgba(255,255,255,.10);
-      position:relative;
-    }
-    .meter > i{
-      display:block;
-      height:100%;
-      width: 34%;
-      background: linear-gradient(90deg, rgba(56,246,255,.85), rgba(193,10,43,.85));
-      border-radius: 999px;
-      box-shadow: 0 0 22px rgba(56,246,255,.25);
-      transition: width .35s var(--ease);
+    .dot{
+      width:10px; height:10px; border-radius:99px;
+      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,.6), rgba(255,255,255,0) 60%),
+        linear-gradient(180deg, rgba(78,230,169,1), rgba(78,230,169,.35));
+      box-shadow: 0 0 0 5px rgba(78,230,169,.12);
     }
 
     .btn{
-      cursor:pointer;
-      border:1px solid rgba(255,255,255,.14);
-      background: linear-gradient(180deg, rgba(255,255,255,.09), rgba(255,255,255,.03));
-      padding: 10px 12px;
-      border-radius: 12px;
-      transition: transform .16s var(--ease), background .2s var(--ease), border-color .2s var(--ease);
-      box-shadow: 0 14px 35px rgba(0,0,0,.35);
-    }
-    .btn:hover{
-      transform: translateY(-1px);
-      border-color: rgba(56,246,255,.35);
-      background: linear-gradient(180deg, rgba(56,246,255,.10), rgba(255,255,255,.03));
-    }
-    .btn:active{ transform: translateY(1px) scale(.99); }
-    .btn:focus-visible{ outline: 2px solid rgba(56,246,255,.55); outline-offset: 2px; }
-
-    .btn-primary{
-      border-color: rgba(193,10,43,.45);
-      background: linear-gradient(180deg, rgba(193,10,43,.28), rgba(255,255,255,.03));
-    }
-    .btn-primary:hover{
-      border-color: rgba(193,10,43,.75);
-      background: linear-gradient(180deg, rgba(193,10,43,.35), rgba(56,246,255,.04));
-    }
-
-    .menu{
-      width:44px; height:44px;
-      display:grid; place-items:center;
-      border-radius: 14px;
-    }
-    .menu .lines{
-      width:18px;
-      height:12px;
-      position:relative;
-    }
-    .menu .lines::before,
-    .menu .lines::after,
-    .menu .lines i{
-      content:"";
-      position:absolute;
-      left:0; right:0;
-      height:2px;
-      border-radius:99px;
-      background: rgba(243,238,251,.88);
-      transition: transform .25s var(--ease), top .25s var(--ease), opacity .25s var(--ease);
-    }
-    .menu .lines::before{ top:0; }
-    .menu .lines i{ top:5px; opacity:.85; }
-    .menu .lines::after{ top:10px; opacity:.75; }
-    .menu[aria-expanded="true"] .lines::before{ top:5px; transform: rotate(45deg); }
-    .menu[aria-expanded="true"] .lines i{ opacity:0; }
-    .menu[aria-expanded="true"] .lines::after{ top:5px; transform: rotate(-45deg); }
-
-    .mobile-panel{
-      display:grid;
-      grid-template-columns: 1fr;
-      gap: 4px;
-      max-height:0;
-      overflow:hidden;
-      transition: max-height .35s var(--ease);
-      border-top: 1px solid rgba(255,255,255,.06);
-      background: rgba(7,6,11,.55);
-      backdrop-filter: blur(14px);
-    }
-    .mobile-panel a{
-      padding: 14px 18px;
-      color: var(--muted);
-      letter-spacing:.12em;
-      text-transform: uppercase;
-      font-size: 13px;
-      border-bottom: 1px solid rgba(255,255,255,.06);
-    }
-    .mobile-panel a:hover{ color: var(--ink); background: rgba(255,255,255,.04); }
-
-    main{ display:block; }
-    section{
-      max-width: var(--max);
-      margin: 0 auto;
-      padding: 22px 18px;
-    }
-
-    /* Page header (used on non-home pages) */
-    .page-hero{
-      max-width: var(--max);
-      margin:0 auto;
-      padding: 28px 18px 10px;
-      display:grid;
-      gap: 12px;
-    }
-    .kicker{
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-      padding: 10px 12px;
+      appearance:none; border:none; cursor:pointer;
+      font-family: inherit;
       border-radius: 999px;
-      border: 1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.035);
-      width: fit-content;
-      box-shadow: var(--shadow2);
+      padding: 11px 14px;
+      font-weight:600;
+      font-size:.95rem;
+      letter-spacing:.01em;
+      transition: transform .2s var(--ease), filter .2s var(--ease), background .2s var(--ease), box-shadow .2s var(--ease);
+      display:inline-flex; align-items:center; gap:10px;
+      white-space:nowrap;
     }
-    .dot{
-      width:8px; height:8px;
-      border-radius:50%;
-      background: var(--blood);
-      box-shadow: 0 0 0 6px rgba(193,10,43,.16), 0 0 18px rgba(193,10,43,.55);
-      animation: pulse 2.2s var(--ease) infinite;
+    .btn:active{transform: translateY(1px) scale(.98)}
+    .btn-primary{
+      color: #140a08;
+      background:
+        radial-gradient(18px 18px at 25% 30%, rgba(255,255,255,.35), transparent 60%),
+        linear-gradient(135deg, var(--ember), var(--ember2));
+      box-shadow: 0 18px 45px rgba(255,77,46,.22);
     }
-    @keyframes pulse{
-      0%,100%{ transform: scale(1); box-shadow:0 0 0 6px rgba(193,10,43,.16), 0 0 18px rgba(193,10,43,.55);}
-      50%{ transform: scale(1.12); box-shadow:0 0 0 10px rgba(193,10,43,.13), 0 0 26px rgba(193,10,43,.65);}
+    .btn-primary:hover{filter:saturate(1.05) brightness(1.03)}
+    .btn-ghost{
+      color: var(--ink);
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.14);
     }
-    .kicker span{
-      font-size: 12px;
-      letter-spacing:.16em;
-      text-transform: uppercase;
-      color: var(--muted);
-    }
-
-    .title{
-      margin: 8px 0 0;
-      font-family: "Cinzel", serif;
-      font-weight: 800;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-      line-height: .95;
-      font-size: clamp(30px, 5.2vw, 58px);
-    }
-    .subtitle{
-      margin: 0;
-      color: var(--muted);
-      font-size: clamp(14px, 2vw, 18px);
-      line-height: 1.6;
-      max-width: 70ch;
+    .btn-ghost:hover{
+      background: rgba(255,255,255,.09);
+      box-shadow: 0 18px 45px rgba(0,0,0,.28);
+      transform: translateY(-1px);
     }
 
-    /* HOME layout (kept from your original, but made "page-aware") */
-    .home-grid{
-      max-width: var(--max);
-      margin:0 auto;
-      padding: 18px 18px 20px;
-      display:grid;
-      grid-template-columns: 1fr;
-      gap: 18px;
+    .hamburger{
+      display:none;
+      width: 44px; height: 44px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.06);
+      color: var(--ink);
     }
-    .home-top{
-      display:grid;
-      grid-template-columns: 1fr;
-      gap: 18px;
-      align-items:end;
-    }
+    .hamburger svg{width:20px; height:20px}
 
-    .glitch{
+    /* Hero */
+    main{position:relative; z-index:1}
+    .hero{
+      padding: clamp(28px, 4vw, 56px) 0 38px;
       position:relative;
-      display:inline-block;
-      padding: 2px 0;
     }
-    .glitch::before,
-    .glitch::after{
-      content: attr(data-text);
-      position:absolute;
-      left:0; top:0;
-      width:100%;
-      color: rgba(56,246,255,.75);
-      opacity:.22;
-      mix-blend-mode: screen;
-      clip-path: inset(0 0 62% 0);
-      transform: translate(1px, -1px);
-      animation: glitch 3.8s steps(10) infinite;
+
+    .hero-grid{
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: clamp(18px, 3.2vw, 34px);
+      align-items: start;
     }
-    .glitch::after{
-      color: rgba(193,10,43,.85);
-      opacity:.18;
-      clip-path: inset(54% 0 0 0);
-      transform: translate(-1px, 1px);
-      animation-duration: 4.6s;
+
+    .kicker{
+      display:inline-flex; align-items:center; gap:10px;
+      color: var(--muted);
+      font-size:.92rem;
+      letter-spacing:.06em;
+      text-transform: uppercase;
+      margin: 10px 0 18px;
     }
-    @keyframes glitch{
-      0%, 100% { filter: none; }
-      25% { clip-path: inset(10% 0 68% 0); transform: translate(2px, -2px); }
-      50% { clip-path: inset(44% 0 28% 0); transform: translate(-2px, 2px); }
-      75% { clip-path: inset(64% 0 10% 0); transform: translate(1px, 1px); }
+    .kicker .seal{
+      width:22px; height:22px; border-radius: 9px;
+      background:
+        linear-gradient(135deg, rgba(78,230,169,.35), rgba(78,230,169,.08)),
+        radial-gradient(8px 8px at 35% 35%, rgba(255,255,255,.18), transparent 60%);
+      border: 1px solid rgba(78,230,169,.25);
+      box-shadow: 0 0 0 6px rgba(78,230,169,.08);
+    }
+
+    h1{
+      font-family:"Unbounded", ui-sans-serif;
+      font-size: var(--h1);
+      line-height:1.05;
+      letter-spacing: var(--tracking-tight);
+      margin: 0 0 14px;
+      text-wrap: balance;
+    }
+    .gradient-word{
+      background: linear-gradient(90deg, rgba(255,255,255,.96), rgba(255,255,255,.85), rgba(255,138,61,.95));
+      -webkit-background-clip:text;
+      background-clip:text;
+      color:transparent;
     }
 
     .lead{
-      margin: 0;
-      max-width: 62ch;
+      font-size: var(--p);
       color: var(--muted);
-      font-size: clamp(15px, 2.1vw, 18px);
-      line-height: 1.6;
+      margin: 0 0 22px;
+      max-width: 62ch;
     }
 
     .hero-actions{
       display:flex;
       flex-wrap:wrap;
-      gap:12px;
-      margin-top: 16px;
       align-items:center;
-    }
-    .hint{
-      display:flex;
-      align-items:center;
-      gap:10px;
-      color: var(--dim);
-      font-size: 13px;
-      letter-spacing:.04em;
-      padding: 10px 12px;
-      border-radius: 12px;
-      background: rgba(255,255,255,.03);
-      border: 1px solid rgba(255,255,255,.10);
-    }
-    .chip{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      padding: 8px 10px;
-      border-radius: 999px;
-      background: rgba(0,0,0,.25);
-      border: 1px solid rgba(255,255,255,.12);
-      color: var(--muted);
-      letter-spacing:.12em;
-      text-transform: uppercase;
-      font-size: 11px;
-    }
-    .chip i{
-      width:10px; height:10px; border-radius:3px;
-      background: linear-gradient(180deg, rgba(56,246,255,.9), rgba(193,10,43,.85));
-      box-shadow: 0 0 18px rgba(56,246,255,.16);
-    }
-
-    .stage{
-      border-radius: var(--r-lg);
-      border: 1px solid rgba(255,255,255,.12);
-      background:
-        radial-gradient(700px 420px at 20% 20%, rgba(56,246,255,.12), transparent 58%),
-        radial-gradient(600px 420px at 80% 70%, rgba(193,10,43,.18), transparent 62%),
-        linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.02));
-      box-shadow: var(--shadow);
-      overflow:hidden;
-      position:relative;
-      min-height: 360px;
-    }
-    .stage::before{
-      content:"";
-      position:absolute;
-      inset:-20%;
-      background:
-        radial-gradient(circle at 30% 20%, rgba(193,10,43,.35), transparent 45%),
-        radial-gradient(circle at 65% 55%, rgba(255,59,48,.25), transparent 52%),
-        radial-gradient(circle at 52% 82%, rgba(193,10,43,.28), transparent 52%);
-      filter: blur(18px);
-      opacity:.9;
-      transform: rotate(-6deg);
-    }
-    .stage::after{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:
-        radial-gradient(60% 70% at 50% 46%, transparent 0 50%, rgba(0,0,0,.55) 78%),
-        repeating-linear-gradient(180deg, rgba(255,255,255,.04) 0 1px, transparent 1px 4px);
-      opacity:.22;
-      pointer-events:none;
-    }
-    .stage-inner{
-      position:relative;
-      height:100%;
-      padding: 18px;
-      display:grid;
-      grid-template-rows: auto 1fr auto;
-      gap: 14px;
-    }
-    .stage-head{
-      display:flex;
-      align-items:flex-start;
-      justify-content:space-between;
       gap: 12px;
-    }
-    .stage-head h2{
-      margin: 2px 0 4px;
-      font-family:"Cinzel", serif;
-      text-transform: uppercase;
-      letter-spacing:.14em;
-      font-weight: 700;
-      font-size: 14px;
-      color: rgba(243,238,251,.9);
-    }
-    .stage-head p{
-      margin:0;
-      color: var(--muted);
-      font-size: 13px;
-      max-width: 48ch;
-      line-height:1.5;
-    }
-    .badge{
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-      padding: 10px 12px;
-      border-radius: 999px;
-      background: rgba(0,0,0,.28);
-      border: 1px solid rgba(255,255,255,.12);
-      white-space:nowrap;
-    }
-    .badge strong{
-      letter-spacing:.16em;
-      text-transform: uppercase;
-      font-size: 11px;
-      font-weight: 600;
-      color: var(--ink);
-    }
-    .badge span{
-      font-size: 11px;
-      color: var(--dim);
-      letter-spacing:.08em;
-      text-transform: uppercase;
+      margin: 18px 0 20px;
     }
 
-    .portal-area{
+    .stats{
       display:grid;
-      grid-template-columns: 1fr;
-      gap: 14px;
-      align-items:stretch;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: 12px;
+      margin-top: 22px;
     }
-    .portal{
-      border-radius: 20px;
-      border: 1px solid rgba(255,255,255,.12);
-      background: rgba(0,0,0,.20);
-      overflow:hidden;
-      position:relative;
-      min-height: 170px;
-      display:grid;
-      place-items:center;
-    }
-    .portal svg{ width:min(520px, 100%); height:auto; }
-    .portal .ring{
-      transform-origin: 50% 50%;
-      animation: ring 6.6s var(--ease) infinite;
-      filter: drop-shadow(0 0 18px rgba(193,10,43,.35));
-    }
-    @keyframes ring{
-      0%,100%{ transform: rotate(-2deg) scale(1); }
-      50%{ transform: rotate(2deg) scale(1.02); }
-    }
-
-    .wall{
-      border-radius: 20px;
-      border: 1px solid rgba(255,255,255,.12);
-      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
-      overflow:hidden;
-      padding: 14px;
-      position:relative;
-    }
-    .wall::before{
-      content:"";
-      position:absolute;
-      inset:0;
-      background: radial-gradient(420px 220px at 30% 30%, rgba(56,246,255,.12), transparent 60%),
-                  radial-gradient(420px 240px at 75% 75%, rgba(193,10,43,.14), transparent 65%);
-      opacity:.9;
-      pointer-events:none;
-    }
-
-    .alphabet{
-      position:relative;
-      display:grid;
-      grid-template-columns: repeat(9, 1fr);
-      gap: 8px;
-      user-select:none;
-    }
-    .alphabet button{
-      border: 1px solid rgba(255,255,255,.10);
-      background: rgba(0,0,0,.18);
-      border-radius: 12px;
-      padding: 10px 0;
-      color: rgba(243,238,251,.78);
-      letter-spacing:.12em;
-      text-transform: uppercase;
-      font-size: 12px;
-      transition: transform .14s var(--ease), border-color .2s var(--ease), background .2s var(--ease);
-      position:relative;
-      overflow:hidden;
-    }
-    .alphabet button::after{
-      content:"";
-      position:absolute; inset:-40%;
-      background: radial-gradient(circle at 40% 40%, rgba(56,246,255,.22), transparent 55%),
-                  radial-gradient(circle at 60% 60%, rgba(193,10,43,.18), transparent 55%);
-      opacity:0;
-      transition: opacity .2s var(--ease);
-    }
-    .alphabet button:hover{
-      transform: translateY(-1px);
-      border-color: rgba(56,246,255,.28);
+    .stat{
+      padding: 14px 14px;
+      border-radius: var(--radius-lg);
       background: rgba(255,255,255,.05);
-      color: rgba(243,238,251,.92);
-    }
-    .alphabet button:hover::after{ opacity:1; }
-    .alphabet button:active{ transform: translateY(1px) scale(.99); }
-    .alphabet button[aria-pressed="true"]{
-      border-color: rgba(193,10,43,.55);
-      box-shadow: 0 0 0 2px rgba(193,10,43,.18) inset, 0 0 24px rgba(193,10,43,.15);
-      color: var(--ink);
-    }
-
-    .message{
+      border: 1px solid rgba(255,255,255,.10);
+      box-shadow: var(--soft);
       position:relative;
-      margin-top: 12px;
-      padding: 12px 12px;
-      border-radius: 16px;
-      border: 1px solid rgba(255,255,255,.12);
-      background: rgba(0,0,0,.20);
-      display:flex;
-      align-items:flex-start;
-      justify-content:space-between;
-      gap: 12px;
-    }
-    .message .label{
-      display:flex;
-      flex-direction:column;
-      gap: 4px;
-      min-width: 0;
-    }
-    .message .label b{
-      font-family:"Cinzel", serif;
-      letter-spacing:.14em;
-      text-transform: uppercase;
-      font-size: 12px;
-    }
-    .message .label code{
-      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-      color: rgba(243,238,251,.85);
-      font-size: 13px;
-      white-space:nowrap;
       overflow:hidden;
-      text-overflow:ellipsis;
+    }
+    .stat::before{
+      content:"";
+      position:absolute; inset:-1px;
+      background:
+        radial-gradient(220px 140px at 20% 20%, rgba(255,77,46,.16), transparent 60%),
+        radial-gradient(220px 140px at 80% 80%, rgba(78,230,169,.12), transparent 60%);
+      opacity:.85;
+      pointer-events:none;
+    }
+    .stat b{
       display:block;
-      max-width: 100%;
-    }
-
-    .mini-actions{
-      display:flex;
-      gap: 10px;
-      flex-wrap:wrap;
-      justify-content:flex-end;
-      align-items:center;
-    }
-    .ghost{
-      cursor:pointer;
-      padding: 10px 10px;
-      border-radius: 12px;
-      border: 1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.03);
-      color: var(--muted);
-      transition: transform .16s var(--ease), border-color .2s var(--ease), background .2s var(--ease), color .2s var(--ease);
-    }
-    .ghost:hover{
-      transform: translateY(-1px);
-      border-color: rgba(56,246,255,.30);
-      background: rgba(255,255,255,.05);
-      color: var(--ink);
-    }
-    .ghost:active{ transform: translateY(1px) scale(.99); }
-
-    /* Characters page: gallery list (cards allowed because it's a list) */
-    .gallery{
-      margin-top: 16px;
-      display:grid;
-      grid-template-columns: 1fr;
-      gap: 12px;
-    }
-    .char{
-      border-radius: var(--r-lg);
-      border: 1px solid rgba(255,255,255,.12);
-      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
-      box-shadow: var(--shadow2);
-      overflow:hidden;
-      position:relative;
-      display:grid;
-      grid-template-columns: 1fr;
-    }
-    .char::before{
-      content:"";
-      position:absolute; inset:-30%;
-      background: radial-gradient(circle at 20% 40%, rgba(56,246,255,.12), transparent 55%),
-                  radial-gradient(circle at 70% 55%, rgba(193,10,43,.14), transparent 58%);
-      filter: blur(12px);
-      opacity:.8;
-    }
-    .char > *{ position:relative; }
-    .char-top{
-      padding: 14px 14px 10px;
-      display:flex;
-      align-items:flex-start;
-      justify-content:space-between;
-      gap: 10px;
-    }
-    .char h3{
-      margin:0 0 6px;
-      font-family:"Cinzel", serif;
-      text-transform: uppercase;
-      letter-spacing:.14em;
-      font-size: 14px;
-    }
-    .char p{
-      margin:0;
-      color: var(--muted);
-      line-height: 1.65;
-      font-size: 14px;
-      max-width: 70ch;
-    }
-    .tag{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      padding: 8px 10px;
-      border-radius: 999px;
-      border:1px solid rgba(255,255,255,.12);
-      background: rgba(0,0,0,.22);
-      color: rgba(243,238,251,.72);
-      letter-spacing:.12em;
-      text-transform: uppercase;
-      font-size: 11px;
-      white-space:nowrap;
-    }
-    .sig{
-      padding: 0 14px 14px;
-      display:grid;
-      grid-template-columns: 1fr;
-      gap: 10px;
-    }
-    .sig .bar{
-      height: 12px;
-      border-radius: 999px;
-      border:1px solid rgba(255,255,255,.12);
-      background: rgba(0,0,0,.18);
-      overflow:hidden;
-    }
-    .sig .bar i{
-      display:block; height:100%;
-      width: 56%;
-      border-radius:999px;
-      background: linear-gradient(90deg, rgba(56,246,255,.85), rgba(193,10,43,.85));
-      box-shadow: 0 0 22px rgba(56,246,255,.16);
-    }
-    .sig small{
-      color: rgba(243,238,251,.62);
-      letter-spacing:.10em;
-      text-transform: uppercase;
-      font-size: 11px;
-    }
-
-    /* Locations page: "dossier" rail (not a card grid) */
-    .rail{
-      margin-top: 16px;
-      border-radius: var(--r-lg);
-      border: 1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.03);
-      overflow:hidden;
+      font-family:"Unbounded";
+      font-weight:800;
+      font-size: 1.2rem;
+      letter-spacing:-0.02em;
       position:relative;
     }
-    .rail::before{
-      content:"";
-      position:absolute;
-      left: 22px; top: 18px; bottom: 18px;
-      width: 2px;
-      background: linear-gradient(180deg, rgba(56,246,255,.55), rgba(193,10,43,.55));
-      opacity:.55;
-    }
-    .entry{
-      display:grid;
-      grid-template-columns: 46px 1fr;
-      gap: 12px;
-      padding: 16px 16px 16px 10px;
-      border-top: 1px solid rgba(255,255,255,.08);
-    }
-    .entry:first-child{ border-top:none; }
-    .node{
-      display:grid; place-items:center;
-    }
-    .node i{
-      width: 14px; height: 14px;
-      border-radius: 6px;
-      background: linear-gradient(180deg, rgba(56,246,255,.85), rgba(193,10,43,.85));
-      box-shadow: 0 0 0 6px rgba(56,246,255,.09), 0 0 22px rgba(193,10,43,.14);
-      border: 1px solid rgba(255,255,255,.18);
-    }
-    .entry h4{
-      margin:0;
-      font-family:"Cinzel", serif;
-      text-transform: uppercase;
-      letter-spacing:.14em;
-      font-size: 13px;
-    }
-    .entry p{
-      margin: 6px 0 0;
+    .stat small{
+      display:block;
       color: var(--muted);
-      line-height: 1.65;
-      font-size: 14px;
-      max-width: 72ch;
+      margin-top: 4px;
+      position:relative;
     }
 
-    /* Contact page: form */
+    /* Right: "Scroll" panel with inline SVG art */
     .panel{
-      margin-top: 16px;
-      border-radius: var(--r-lg);
+      border-radius: var(--radius-xl);
       border: 1px solid rgba(255,255,255,.12);
       background:
-        radial-gradient(700px 360px at 10% 30%, rgba(193,10,43,.18), transparent 60%),
-        radial-gradient(780px 420px at 90% 70%, rgba(56,246,255,.12), transparent 65%),
-        linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.02));
+        linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.035));
       box-shadow: var(--shadow);
-      padding: 16px;
       overflow:hidden;
       position:relative;
+      min-height: 520px;
     }
     .panel::before{
       content:"";
-      position:absolute;
-      inset:-40%;
+      position:absolute; inset:-2px;
       background:
-        conic-gradient(from 120deg, transparent 0 70%, rgba(56,246,255,.18) 80%, transparent 92%),
-        conic-gradient(from 300deg, transparent 0 75%, rgba(193,10,43,.22) 82%, transparent 95%);
-      filter: blur(18px);
-      opacity:.55;
-      animation: drift 10s linear infinite;
+        radial-gradient(600px 300px at 20% 0%, rgba(255,77,46,.20), transparent 60%),
+        radial-gradient(560px 320px at 100% 20%, rgba(123,97,255,.14), transparent 60%),
+        radial-gradient(520px 280px at 60% 110%, rgba(78,230,169,.14), transparent 60%),
+        repeating-linear-gradient(145deg, rgba(255,255,255,.05) 0 1px, transparent 1px 10px);
+      opacity:.85;
+      pointer-events:none;
     }
-    @keyframes drift{ to{ transform: rotate(360deg); } }
-    .panel > *{ position:relative; }
 
-    .form{
-      margin-top: 12px;
-      display:grid;
-      gap: 10px;
+    .panel-top{
+      padding: 18px 18px 10px;
+      display:flex; align-items:center; justify-content:space-between; gap:12px;
+      position:relative;
     }
-    .field{
-      display:flex;
-      gap: 10px;
-      align-items:center;
-      border-radius: 16px;
+    .tag{
+      display:inline-flex; align-items:center; gap:10px;
+      padding: 8px 11px;
+      border-radius: 999px;
       border: 1px solid rgba(255,255,255,.12);
-      background: rgba(0,0,0,.20);
-      padding: 12px 12px;
+      background: rgba(0,0,0,.18);
+      color: var(--muted);
+      font-size:.88rem;
     }
-    .field svg{ flex:0 0 auto; opacity:.75; }
-    .field input, .field textarea{
-      width:100%;
-      border:none;
-      outline:none;
-      background: transparent;
-      color: var(--ink);
-      font-size: 14px;
-      letter-spacing:.02em;
-      resize: vertical;
+    .tag svg{opacity:.9}
+    .panel-top .mini{
+      display:flex; gap:8px; align-items:center;
+      color: var(--faint);
+      font-size:.88rem;
     }
-    .field textarea{ min-height: 110px; }
-    .field input::placeholder, .field textarea::placeholder{ color: rgba(243,238,251,.45); }
+    .mini .pill{
+      padding: 7px 10px;
+      border-radius: 999px;
+      border: 1px dashed rgba(255,255,255,.18);
+      background: rgba(255,255,255,.04);
+    }
 
-    footer{
-      max-width: var(--max);
-      margin: 0 auto;
-      padding: 22px 18px 34px;
-      color: rgba(243,238,251,.55);
-      display:flex;
+    .panel-art{
+      position:relative;
+      padding: 10px 18px 18px;
+    }
+
+    .scroll{
+      border-radius: 22px;
+      background:
+        linear-gradient(180deg, rgba(243,239,231,.92), rgba(243,239,231,.84));
+      color: var(--paper-ink);
+      border: 1px solid rgba(255,255,255,.18);
+      position:relative;
+      overflow:hidden;
+      box-shadow: 0 22px 60px rgba(0,0,0,.35);
+    }
+    .scroll::before{
+      content:"";
+      position:absolute; inset:-2px;
+      background:
+        radial-gradient(420px 240px at 30% 20%, rgba(255,77,46,.18), transparent 62%),
+        radial-gradient(420px 240px at 70% 80%, rgba(78,230,169,.16), transparent 62%),
+        repeating-linear-gradient(0deg, rgba(16,18,21,.07) 0 1px, transparent 1px 8px);
+      mix-blend-mode: multiply;
+      opacity:.55;
+      pointer-events:none;
+    }
+
+    .scroll-head{
+      display:flex; align-items:center; justify-content:space-between;
+      padding: 16px 16px 10px;
+      border-bottom: 1px solid rgba(16,18,21,.10);
+      position:relative;
+    }
+    .scroll-head strong{
+      font-family:"Unbounded";
+      letter-spacing:-0.02em;
+    }
+    .scroll-head small{
+      color: rgba(16,18,21,.64);
+      font-weight:600;
+    }
+    .scroll-body{
+      padding: 14px 16px 16px;
+      position:relative;
+    }
+    .scroll-body p{
+      margin: 0 0 12px;
+      color: rgba(16,18,21,.82);
+      font-size: .98rem;
+    }
+
+    .sig-grid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 12px;
+    }
+    .sig{
+      border-radius: 16px;
+      padding: 12px;
+      border: 1px solid rgba(16,18,21,.12);
+      background: rgba(255,255,255,.56);
+      position:relative;
+      overflow:hidden;
+    }
+    .sig::after{
+      content:"";
+      position:absolute; inset:-1px;
+      background:
+        radial-gradient(240px 120px at 20% 30%, rgba(255,77,46,.12), transparent 60%),
+        radial-gradient(240px 120px at 80% 80%, rgba(78,230,169,.10), transparent 60%);
+      opacity:.8;
+      pointer-events:none;
+    }
+    .sig b{
+      display:block;
+      font-family:"Unbounded";
+      font-size: .92rem;
+      margin-bottom: 4px;
+      position:relative;
+    }
+    .sig span{
+      display:block;
+      color: rgba(16,18,21,.72);
+      font-size: .88rem;
+      position:relative;
+    }
+
+    /* Sections */
+    section{padding: 52px 0}
+    .section-head{
+      display:flex; align-items:flex-end; justify-content:space-between; gap:18px;
+      margin-bottom: 18px;
+    }
+    h2{
+      font-family:"Unbounded";
+      font-size: var(--h2);
+      margin: 0;
+      letter-spacing: var(--tracking-tight);
+    }
+    .section-head p{
+      margin:0;
+      max-width: 62ch;
+      color: var(--muted);
+      font-size: var(--p);
+    }
+
+    /* Features (no cards: use split lines) */
+    .features{
+      display:grid;
+      grid-template-columns: 1fr;
+      border-top: 1px solid var(--line2);
+      border-bottom: 1px solid var(--line2);
+    }
+    .feature{
+      display:grid;
+      grid-template-columns: 190px 1fr 220px;
+      gap: 18px;
+      padding: 18px 4px;
+      border-top: 1px solid var(--line2);
+      align-items:start;
+    }
+    .feature:first-child{border-top:none}
+    .feature .label{
+      color: var(--faint);
+      text-transform: uppercase;
+      letter-spacing: var(--tracking-wide);
+      font-size: .78rem;
+      padding-top: 4px;
+    }
+    .feature h3{
+      font-family:"Unbounded";
+      font-size: var(--h3);
+      margin: 0 0 6px;
+      letter-spacing:-0.02em;
+    }
+    .feature p{
+      margin:0;
+      color: var(--muted);
+      font-size: var(--p);
+      max-width: 70ch;
+    }
+    .feature .meta{
+      display:flex; justify-content:flex-end;
+      padding-top: 2px;
+      color: var(--muted);
+      font-size:.95rem;
+      gap:10px;
       flex-wrap:wrap;
-      gap: 12px;
-      align-items:center;
-      justify-content:space-between;
-      border-top: 1px solid rgba(255,255,255,.08);
     }
-    footer a{
-      color: rgba(243,238,251,.68);
-      border-bottom: 1px solid rgba(56,246,255,.25);
-      padding-bottom: 2px;
+    .badge{
+      display:inline-flex; align-items:center; gap:8px;
+      padding: 8px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.05);
+    }
+    .badge i{
+      width:9px; height:9px; border-radius: 99px;
+      background: linear-gradient(180deg, rgba(255,138,61,1), rgba(255,77,46,.6));
+      box-shadow: 0 0 0 5px rgba(255,77,46,.10);
+      display:inline-block;
     }
 
-    /* Reveal */
+    /* Timeline: magazine-like */
+    .timeline{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px 18px;
+      align-items: start;
+    }
+    .strip{
+      border-radius: var(--radius-xl);
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.05);
+      box-shadow: var(--soft);
+      overflow:hidden;
+      position:relative;
+    }
+    .strip::before{
+      content:"";
+      position:absolute; inset:-2px;
+      background:
+        radial-gradient(420px 240px at 15% 0%, rgba(255,77,46,.16), transparent 60%),
+        radial-gradient(420px 240px at 100% 70%, rgba(78,230,169,.12), transparent 60%);
+      opacity:.85; pointer-events:none;
+    }
+    .strip header{
+      position:static;
+      backdrop-filter:none;
+      background: transparent;
+      border-bottom: 1px solid rgba(255,255,255,.10);
+    }
+    .strip .inner{
+      padding: 16px 16px 10px;
+      display:flex; justify-content:space-between; align-items:baseline; gap:10px;
+      position:relative;
+    }
+    .strip .inner strong{
+      font-family:"Unbounded";
+      letter-spacing:-0.02em;
+      font-size: 1.05rem;
+    }
+    .strip .inner small{
+      color: var(--muted);
+      font-weight:600;
+    }
+    .strip .body{
+      padding: 0 16px 16px;
+      position:relative;
+    }
+    .strip .body p{margin: 10px 0 0; color: var(--muted); font-size: var(--p)}
+    .callout{
+      margin-top: 12px;
+      padding: 12px 12px;
+      border-radius: 16px;
+      border: 1px dashed rgba(255,255,255,.18);
+      background: rgba(0,0,0,.14);
+      color: var(--muted);
+      display:flex; gap:10px; align-items:flex-start;
+    }
+    .callout svg{flex:0 0 auto; margin-top:2px; opacity:.9}
+    .callout b{color: var(--ink)}
+
+    /* Clan / Jutsu selector area */
+    .dojo{
+      border-radius: calc(var(--radius-xl) + 8px);
+      border: 1px solid rgba(255,255,255,.12);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      position:relative;
+    }
+    .dojo::before{
+      content:"";
+      position:absolute; inset:-2px;
+      background:
+        radial-gradient(580px 320px at 10% 10%, rgba(123,97,255,.16), transparent 60%),
+        radial-gradient(640px 380px at 95% 35%, rgba(255,77,46,.16), transparent 60%),
+        repeating-linear-gradient(90deg, rgba(255,255,255,.04) 0 1px, transparent 1px 12px);
+      opacity:.85; pointer-events:none;
+    }
+    .dojo-inner{
+      position:relative;
+      display:grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 18px;
+      padding: 18px;
+      align-items:start;
+    }
+
+    .tabs{
+      display:flex; flex-wrap:wrap; gap: 10px;
+      align-items:center;
+      margin-bottom: 12px;
+    }
+    .tab{
+      cursor:pointer;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(0,0,0,.16);
+      color: var(--muted);
+      padding: 10px 12px;
+      font-weight:700;
+      letter-spacing:.01em;
+      transition: transform .2s var(--ease), background .2s var(--ease), color .2s var(--ease);
+    }
+    .tab:hover{transform: translateY(-1px); background: rgba(255,255,255,.08); color: var(--ink)}
+    .tab[aria-selected="true"]{
+      background:
+        radial-gradient(18px 18px at 25% 30%, rgba(255,255,255,.22), transparent 60%),
+        linear-gradient(135deg, rgba(255,77,46,.95), rgba(255,138,61,.85));
+      color: #160b08;
+      border-color: rgba(255,255,255,.0);
+    }
+
+    .dojo-left h3{
+      font-family:"Unbounded";
+      margin: 0 0 8px;
+      font-size: 1.25rem;
+      letter-spacing:-0.02em;
+    }
+    .dojo-left p{margin:0; color: var(--muted); font-size: var(--p)}
+    .dojo-left .note{
+      margin-top: 12px;
+      color: var(--faint);
+      font-size: .92rem;
+      border-left: 2px solid rgba(255,255,255,.18);
+      padding-left: 12px;
+    }
+
+    .dojo-right{
+      border-radius: var(--radius-xl);
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(0,0,0,.16);
+      padding: 14px;
+      overflow:hidden;
+      position:relative;
+      min-height: 220px;
+    }
+    .dojo-right::before{
+      content:"";
+      position:absolute; inset:-2px;
+      background:
+        radial-gradient(420px 260px at 20% 10%, rgba(78,230,169,.16), transparent 62%),
+        radial-gradient(420px 260px at 80% 100%, rgba(123,97,255,.14), transparent 62%);
+      opacity:.85; pointer-events:none;
+    }
+    .dojo-right .title{
+      position:relative;
+      display:flex; justify-content:space-between; align-items:baseline; gap:12px;
+      margin-bottom: 10px;
+    }
+    .dojo-right .title strong{
+      font-family:"Unbounded";
+      letter-spacing:-0.02em;
+      font-size: 1.1rem;
+    }
+    .dojo-right .title small{color: var(--muted); font-weight:600}
+    .dojo-right .desc{
+      position:relative;
+      color: var(--muted);
+      font-size: var(--p);
+      margin: 0 0 12px;
+      max-width: 70ch;
+    }
+    .meter{
+      position:relative;
+      display:grid;
+      gap:10px;
+      margin-top: 10px;
+    }
+    .bar{
+      display:grid;
+      grid-template-columns: 92px 1fr 48px;
+      gap: 10px;
+      align-items:center;
+      color: var(--muted);
+      font-size: .92rem;
+    }
+    .track{
+      height: 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.05);
+      overflow:hidden;
+      position:relative;
+    }
+    .fill{
+      height: 100%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, rgba(78,230,169,.9), rgba(255,138,61,.95));
+      box-shadow: 0 10px 20px rgba(255,77,46,.15);
+      width: 0%;
+      transition: width .7s var(--ease);
+    }
+
+    /* Footer */
+    footer{
+      padding: 42px 0;
+      border-top: 1px solid var(--line2);
+      color: var(--muted);
+    }
+    .footer-grid{
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 18px;
+      align-items:start;
+    }
+    .fine{
+      font-size:.92rem;
+      color: var(--faint);
+      margin-top: 10px;
+      max-width: 80ch;
+    }
+    .footer-links{
+      display:flex; flex-wrap:wrap; gap:10px;
+      justify-content:flex-end;
+      align-items:center;
+    }
+    .footer-links a{
+      text-decoration:none;
+      padding: 10px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.04);
+      color: var(--muted);
+      transition: transform .2s var(--ease), background .2s var(--ease), color .2s var(--ease);
+    }
+    .footer-links a:hover{transform: translateY(-1px); background: rgba(255,255,255,.08); color: var(--ink)}
+
+    /* Reveal animations */
     .reveal{
       opacity:0;
       transform: translateY(14px);
-      filter: blur(2px);
-      transition: opacity .7s var(--ease), transform .7s var(--ease), filter .7s var(--ease);
-    }
-    .reveal.in{
-      opacity:1;
-      transform: translateY(0);
-      filter: blur(0);
-    }
-    .stagger > *{ opacity:0; transform: translateY(10px); }
-    .stagger.in > *{
-      opacity:1;
-      transform: translateY(0);
       transition: opacity .7s var(--ease), transform .7s var(--ease);
     }
-    .stagger.in > *:nth-child(1){ transition-delay: .05s; }
-    .stagger.in > *:nth-child(2){ transition-delay: .14s; }
-    .stagger.in > *:nth-child(3){ transition-delay: .22s; }
-    .stagger.in > *:nth-child(4){ transition-delay: .30s; }
-    .stagger.in > *:nth-child(5){ transition-delay: .38s; }
-
-    /* Page routing: show one "page" section at a time */
-    .page{ display:none; }
-    .page.active{ display:block; }
-
-    @media (min-width: 780px){
-      nav ul{ display:flex; }
-      .menu{ display:none; }
-      .mobile-panel{ display:none; }
-
-      .home-grid{ padding: 28px 18px 24px; gap: 22px; }
-      .home-top{ grid-template-columns: 1.15fr .85fr; gap: 22px; align-items:stretch; }
-      .portal-area{ grid-template-columns: 1.05fr .95fr; }
-      .stage{ min-height: 430px; }
-
-      .gallery{ grid-template-columns: repeat(2, 1fr); }
-      .panel{ padding: 22px; }
-      .page-hero{ padding: 38px 18px 10px; }
+    .reveal.is-in{
+      opacity:1;
+      transform: translateY(0);
+    }
+    .stagger > *{
+      opacity:0;
+      transform: translateY(10px);
+      animation: rise .8s var(--ease) forwards;
+    }
+    .stagger > *:nth-child(1){animation-delay: .06s}
+    .stagger > *:nth-child(2){animation-delay: .14s}
+    .stagger > *:nth-child(3){animation-delay: .22s}
+    .stagger > *:nth-child(4){animation-delay: .30s}
+    .stagger > *:nth-child(5){animation-delay: .38s}
+    @keyframes rise{
+      from{opacity:0; transform: translateY(12px)}
+      to{opacity:1; transform: translateY(0)}
     }
 
-    @media (min-width: 1080px){
-      .gallery{ grid-template-columns: repeat(3, 1fr); }
+    /* Mobile nav */
+    @media (max-width: 920px){
+      .hero-grid{grid-template-columns: 1fr}
+      .panel{min-height: auto}
+      .feature{grid-template-columns: 140px 1fr}
+      .feature .meta{justify-content:flex-start}
+      .timeline{grid-template-columns: 1fr}
+      .dojo-inner{grid-template-columns: 1fr}
+      .nav-actions{min-width:auto}
+    }
+    @media (max-width: 760px){
+      nav ul{display:none}
+      .hamburger{display:inline-flex; align-items:center; justify-content:center}
+      .chip{display:none}
+      .stats{grid-template-columns: 1fr}
+      .feature{grid-template-columns: 1fr}
+      .feature .label{order:0}
+      .feature .meta{order:3}
+      .footer-grid{grid-template-columns: 1fr}
+      .footer-links{justify-content:flex-start}
     }
 
+    /* Drawer */
+    .drawer{
+      position:fixed; inset:0;
+      background: rgba(0,0,0,.55);
+      backdrop-filter: blur(10px);
+      z-index:100;
+      display:none;
+    }
+    .drawer[aria-hidden="false"]{display:block}
+    .drawer-panel{
+      position:absolute; right: 14px; top: 14px; left: 14px;
+      border-radius: 22px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: linear-gradient(180deg, rgba(12,15,20,.92), rgba(12,15,20,.72));
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+    .drawer-head{
+      display:flex; justify-content:space-between; align-items:center;
+      padding: 14px 14px;
+      border-bottom: 1px solid rgba(255,255,255,.10);
+    }
+    .drawer-head strong{font-family:"Unbounded"; letter-spacing:-0.02em}
+    .drawer-close{
+      width: 42px; height: 42px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.06);
+      color: var(--ink);
+      cursor:pointer;
+    }
+    .drawer-body{padding: 12px 14px 14px}
+    .drawer-body a{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      text-decoration:none;
+      padding: 12px 12px;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+      color: var(--muted);
+      margin-top: 10px;
+      transition: transform .2s var(--ease), background .2s var(--ease), color .2s var(--ease);
+    }
+    .drawer-body a:hover{transform: translateY(-1px); background: rgba(255,255,255,.08); color: var(--ink)}
+    .kbd{
+      font-size:.85rem;
+      color: var(--faint);
+      border: 1px solid rgba(255,255,255,.16);
+      border-bottom-color: rgba(255,255,255,.08);
+      background: rgba(255,255,255,.04);
+      padding: 6px 9px;
+      border-radius: 12px;
+    }
+
+    /* Reduced motion */
     @media (prefers-reduced-motion: reduce){
-      *{ animation: none !important; transition: none !important; scroll-behavior: auto !important; }
-      .reveal{ opacity:1; transform:none; filter:none; }
-      .stagger > *{ opacity:1; transform:none; }
+      .reveal, .stagger > *{transition:none; animation:none; opacity:1; transform:none}
+      .fill{transition:none}
+      nav a, .btn, .tab, .footer-links a{transition:none}
     }
   </style>
 </head>
@@ -968,676 +899,660 @@
 <body>
   <a class="skip" href="#content">Skip to content</a>
 
-  <div class="atmosphere" aria-hidden="true">
-    <svg viewBox="0 0 1200 800" preserveAspectRatio="none">
-      <defs>
-        <radialGradient id="sp" cx="50%" cy="50%" r="50%">
-          <stop offset="0" stop-color="white" stop-opacity=".85"/>
-          <stop offset=".65" stop-color="white" stop-opacity=".18"/>
-          <stop offset="1" stop-color="white" stop-opacity="0"/>
-        </radialGradient>
-        <linearGradient id="th" x1="0" x2="1" y1="0" y2="1">
-          <stop offset="0" stop-color="#ff3b30" stop-opacity=".05"/>
-          <stop offset=".55" stop-color="#c10a2b" stop-opacity=".25"/>
-          <stop offset="1" stop-color="#38f6ff" stop-opacity=".05"/>
-        </linearGradient>
-        <filter id="blur"><feGaussianBlur stdDeviation="1.2" /></filter>
-      </defs>
-
-      <path class="thread" d="M-40,160 C240,60 310,240 540,160 C750,90 860,220 1240,120" fill="none" stroke="url(#th)" stroke-width="2"/>
-      <path class="thread" d="M-30,520 C220,420 340,600 560,520 C820,420 910,640 1240,540" fill="none" stroke="url(#th)" stroke-width="2" opacity=".7"/>
-      <path class="thread" d="M220,820 C360,560 520,640 650,450 C790,240 980,260 1060,-60" fill="none" stroke="url(#th)" stroke-width="2" opacity=".55"/>
-
-      <g class="spore" filter="url(#blur)">
-        <circle cx="110" cy="120" r="26" fill="url(#sp)"/>
-        <circle cx="260" cy="210" r="16" fill="url(#sp)"/>
-        <circle cx="430" cy="110" r="20" fill="url(#sp)"/>
-        <circle cx="610" cy="210" r="22" fill="url(#sp)"/>
-        <circle cx="820" cy="130" r="18" fill="url(#sp)"/>
-        <circle cx="1010" cy="220" r="24" fill="url(#sp)"/>
-        <circle cx="160" cy="560" r="20" fill="url(#sp)"/>
-        <circle cx="360" cy="620" r="26" fill="url(#sp)"/>
-        <circle cx="560" cy="560" r="16" fill="url(#sp)"/>
-        <circle cx="760" cy="640" r="22" fill="url(#sp)"/>
-        <circle cx="980" cy="600" r="18" fill="url(#sp)"/>
-        <circle cx="1120" cy="520" r="26" fill="url(#sp)"/>
-      </g>
-    </svg>
-  </div>
-
-  <div class="wrap">
-    <header>
+  <header>
+    <div class="wrap">
       <div class="nav" role="navigation" aria-label="Primary">
-        <div class="brand">
-          <div class="logo" aria-hidden="true"></div>
+        <a class="brand" href="#top" aria-label="Leaf Signal home">
+          <div class="mark" aria-hidden="true"></div>
           <div>
-            <h1>Hawkins Archive</h1>
-            <p>Field guide • 1983</p>
+            <strong>Leaf Signal</strong>
+            <span>Naruto fanpage · lore & arcs</span>
           </div>
-        </div>
+        </a>
 
         <nav aria-label="Site">
           <ul>
-            <!-- These links work as real pages if you split files OR as a single-page router with #hash -->
-            <li><a href="#/home" data-route="home">Home</a></li>
-            <li><a href="#/characters" data-route="characters">Characters</a></li>
-            <li><a href="#/locations" data-route="locations">Locations</a></li>
-            <li><a href="#/contact" data-route="contact">Contact</a></li>
+            <li><a href="#lore" aria-current="page">Lore</a></li>
+            <li><a href="#timeline">Timeline</a></li>
+            <li><a href="#dojo">Clans & Jutsu</a></li>
+            <li><a href="#about">About</a></li>
           </ul>
         </nav>
 
         <div class="nav-actions">
-          <div class="pill" aria-label="EMF meter status">
-            <small>EMF</small>
-            <div class="meter" aria-hidden="true"><i id="emfBar"></i></div>
+          <div class="chip" title="Fan-made project status">
+            <span class="dot" aria-hidden="true"></span>
+            <span>Fan-made • spoiler-aware</span>
           </div>
-
-          <button class="btn menu" id="menuBtn" aria-expanded="false" aria-controls="mobilePanel" aria-label="Open menu">
-            <span class="lines" aria-hidden="true"><i></i></span>
+          <button class="btn btn-ghost hamburger" id="openMenu" aria-label="Open menu" aria-haspopup="dialog" aria-controls="drawer">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M5 7h14M5 12h14M5 17h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
           </button>
-
-          <button class="btn btn-primary" id="panicBtn" type="button" aria-label="Trigger emergency protocol">
-            Protocol
+          <button class="btn btn-primary" id="ctaScroll">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M12 3c3.2 0 6.2 1.1 8.6 3.1l-2.1 2.1C16.8 6.8 14.5 6 12 6 7.6 6 4 9.6 4 14s3.6 8 8 8c2.5 0 4.8-.8 6.5-2.3l2.1 2.1C18.2 23.9 15.2 25 12 25" opacity="0"/>
+              <path d="M12 3c4.97 0 9 4.03 9 9s-4.03 9-9 9-9-4.03-9-9 4.03-9 9-9Z" stroke="currentColor" stroke-width="2" opacity=".25"/>
+              <path d="M8.8 12.1c1.2-2.1 5.2-2.1 6.4 0 .7 1.2.2 2.6-.9 3.4l-1.3.9c-.8.6-1.1 1.4-1.1 2.6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <path d="M12 19.5h.01" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+            </svg>
+            Start exploring
           </button>
         </div>
       </div>
+    </div>
+  </header>
 
-      <div class="mobile-panel" id="mobilePanel" aria-label="Mobile menu">
-        <a href="#/home" data-route="home">Home</a>
-        <a href="#/characters" data-route="characters">Characters</a>
-        <a href="#/locations" data-route="locations">Locations</a>
-        <a href="#/contact" data-route="contact">Contact</a>
+  <!-- Mobile drawer -->
+  <div class="drawer" id="drawer" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Menu">
+    <div class="drawer-panel">
+      <div class="drawer-head">
+        <strong>Navigate</strong>
+        <button class="drawer-close" id="closeMenu" aria-label="Close menu">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" width="20" height="20">
+            <path d="M7 7l10 10M17 7L7 17" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </button>
       </div>
-    </header>
+      <div class="drawer-body">
+        <a href="#lore" data-close-drawer>
+          <span>Lore</span><span class="kbd">1</span>
+        </a>
+        <a href="#timeline" data-close-drawer>
+          <span>Timeline</span><span class="kbd">2</span>
+        </a>
+        <a href="#dojo" data-close-drawer>
+          <span>Clans & Jutsu</span><span class="kbd">3</span>
+        </a>
+        <a href="#about" data-close-drawer>
+          <span>About</span><span class="kbd">4</span>
+        </a>
+      </div>
+    </div>
+  </div>
 
-    <main id="content">
+  <main id="content">
+    <div id="top"></div>
 
-      <!-- PAGE 1: HOME -->
-      <section class="page active" data-page="home" aria-label="Home page">
-        <div class="home-grid">
-          <div class="home-top">
-            <div class="reveal" data-reveal>
-              <div class="kicker">
-                <span class="dot" aria-hidden="true"></span>
-                <span>Live investigation feed • The Upside Down</span>
+    <section class="hero">
+      <div class="wrap">
+        <div class="hero-grid">
+          <div class="stagger" aria-label="Hero content">
+            <div class="kicker">
+              <span class="seal" aria-hidden="true"></span>
+              <span>Hidden Leaf archives • fan-curated</span>
+            </div>
+
+            <h1>
+              A fanpage built like a <span class="gradient-word">mission scroll</span>:
+              crisp lore, clean arcs, and jutsu notes.
+            </h1>
+
+            <p class="lead">
+              Leaf Signal is a spoiler-aware Naruto hub designed for quick reading and deep dives.
+              Browse themes, track major arcs, and explore clans & techniques with a dojo-style selector.
+            </p>
+
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="#timeline">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M7 3v3M17 3v3M4 8h16M6 11h6M6 15h10M6 19h8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+                See the arc timeline
+              </a>
+              <a class="btn btn-ghost" href="#dojo">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M12 2l3 6 7 .9-5.2 4.7 1.6 7.4L12 18.7 5.6 21l1.6-7.4L2 8.9 9 8l3-6Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                </svg>
+                Explore clans & jutsu
+              </a>
+            </div>
+
+            <div class="stats" aria-label="Quick stats">
+              <div class="stat">
+                <b>Arc-first</b>
+                <small>Read Naruto by story beats, not menus.</small>
               </div>
+              <div class="stat">
+                <b>Fan-safe</b>
+                <small>Toggle spoilers by era (optional).</small>
+              </div>
+              <div class="stat">
+                <b>Fast lore</b>
+                <small>Skimmable notes with depth when needed.</small>
+              </div>
+            </div>
+          </div>
 
-              <h2 class="title">
-                <span class="glitch" data-text="Stranger Things">Stranger Things</span>
-              </h2>
-
-              <p class="lead">
-                A proper multi-section fan site foundation: Home, Characters, Locations, and Contact.
-                Use the navigation—these are separate “pages” inside one file (hash routing), or you can split them into 4 HTML files later.
-              </p>
-
-              <div class="hero-actions stagger" data-reveal>
-                <a class="btn btn-primary" href="#/characters">Browse characters</a>
-                <button class="btn" id="lightsBtn" type="button">Toggle wall lights</button>
-                <span class="hint">
-                  <span class="chip"><i aria-hidden="true"></i> tip</span>
-                  <span>Type letters on your keyboard.</span>
-                </span>
+          <aside class="panel reveal" aria-label="Mission scroll preview">
+            <div class="panel-top">
+              <div class="tag">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M7 3h10v4H7V3Z" stroke="currentColor" stroke-width="2"/>
+                  <path d="M6 7h12l-1 14H7L6 7Z" stroke="currentColor" stroke-width="2"/>
+                  <path d="M9 11h6M9 15h5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+                <span>Mission Scroll</span>
+              </div>
+              <div class="mini">
+                <span class="pill">Keyboard: 1–4</span>
               </div>
             </div>
 
-            <aside class="stage reveal" data-reveal aria-label="Interactive portal and alphabet wall">
-              <div class="stage-inner">
-                <div class="stage-head">
-                  <div>
-                    <h2>Containment Window</h2>
-                    <p>Decode messages using the wall. The lab prefers short transmissions.</p>
-                  </div>
-                  <div class="badge" aria-label="Status badge">
-                    <strong id="statusWord">Stable</strong>
-                    <span id="statusSub">quiet</span>
-                  </div>
+            <div class="panel-art">
+              <div class="scroll" role="group" aria-label="Fan-made scroll content">
+                <div class="scroll-head">
+                  <strong>Leaf Signal Brief</strong>
+                  <small>v1 • handcrafted UI</small>
                 </div>
+                <div class="scroll-body">
+                  <p>
+                    This page avoids external images on purpose—everything is ink, gradients, and geometry.
+                    Swap in your own art later without changing the layout.
+                  </p>
+                  <p>
+                    Use this space for: character spotlights, OST picks, episode guides, theories, or “best fights” lists.
+                  </p>
 
-                <div class="portal-area">
-                  <div class="portal" aria-label="Portal visualization">
-                    <svg viewBox="0 0 520 240" role="img" aria-label="A stylized glowing portal">
-                      <defs>
-                        <radialGradient id="pg" cx="50%" cy="45%" r="68%">
-                          <stop offset="0" stop-color="#38f6ff" stop-opacity=".22"/>
-                          <stop offset=".55" stop-color="#c10a2b" stop-opacity=".22"/>
-                          <stop offset="1" stop-color="#000000" stop-opacity="0"/>
-                        </radialGradient>
-                        <linearGradient id="pl" x1="0" x2="1">
-                          <stop offset="0" stop-color="#38f6ff" stop-opacity=".8"/>
-                          <stop offset=".55" stop-color="#c10a2b" stop-opacity=".85"/>
-                          <stop offset="1" stop-color="#ff3b30" stop-opacity=".55"/>
-                        </linearGradient>
-                        <filter id="glow">
-                          <feGaussianBlur stdDeviation="3" result="b"/>
-                          <feMerge>
-                            <feMergeNode in="b"/>
-                            <feMergeNode in="SourceGraphic"/>
-                          </feMerge>
-                        </filter>
-                      </defs>
-
-                      <rect x="0" y="0" width="520" height="240" fill="url(#pg)"/>
-                      <g class="ring" filter="url(#glow)">
-                        <path d="M260,22 C355,22 436,74 468,120 C436,166 355,218 260,218 C165,218 84,166 52,120 C84,74 165,22 260,22 Z"
-                              fill="none" stroke="url(#pl)" stroke-width="4" opacity=".9"/>
-                        <path d="M260,52 C345,52 412,92 438,120 C412,148 345,188 260,188 C175,188 108,148 82,120 C108,92 175,52 260,52 Z"
-                              fill="none" stroke="rgba(243,238,251,.35)" stroke-width="1.4" opacity=".7"/>
-                        <path d="M260,82 C332,82 388,108 408,120 C388,132 332,158 260,158 C188,158 132,132 112,120 C132,108 188,82 260,82 Z"
-                              fill="none" stroke="rgba(56,246,255,.26)" stroke-width="1.2" opacity=".9"/>
-                      </g>
-
-                      <g opacity=".55">
-                        <path d="M92,120 C130,104 150,110 174,92" stroke="rgba(193,10,43,.55)" stroke-width="2" fill="none"/>
-                        <path d="M428,120 C392,102 370,114 346,92" stroke="rgba(56,246,255,.45)" stroke-width="2" fill="none"/>
-                        <path d="M260,214 C250,184 270,176 264,154" stroke="rgba(255,59,48,.42)" stroke-width="2" fill="none"/>
-                      </g>
-                    </svg>
-                  </div>
-
-                  <div class="wall" aria-label="Alphabet wall decoder">
-                    <div class="alphabet" id="alphabet" role="group" aria-label="Alphabet wall buttons"></div>
-
-                    <div class="message" aria-live="polite">
-                      <div class="label">
-                        <b>Decoded</b>
-                        <code id="decoded">PRESS LETTERS…</code>
-                      </div>
-                      <div class="mini-actions">
-                        <button class="ghost" id="backspaceBtn" type="button">Backspace</button>
-                        <button class="ghost" id="clearBtn" type="button">Clear</button>
-                        <button class="ghost" id="copyBtn" type="button">Copy</button>
-                      </div>
+                  <div class="sig-grid" aria-label="Signature blocks">
+                    <div class="sig">
+                      <b>Arc notes</b>
+                      <span>Clean reading + quick context.</span>
+                    </div>
+                    <div class="sig">
+                      <b>Jutsu index</b>
+                      <span>Elements, range, and risk.</span>
+                    </div>
+                    <div class="sig">
+                      <b>Clan threads</b>
+                      <span>Motifs & legacy themes.</span>
+                    </div>
+                    <div class="sig">
+                      <b>Fan section</b>
+                      <span>Headcanons + community picks.</span>
                     </div>
                   </div>
                 </div>
-
-                <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center; justify-content:space-between;">
-                  <span class="chip" title="Tip"><i aria-hidden="true"></i> Try: FRIENDS</span>
-                  <span style="color: rgba(243,238,251,.55); font-size: 12px; letter-spacing:.08em; text-transform: uppercase;">
-                    Signal noise: <span id="noise">low</span>
-                  </span>
-                </div>
               </div>
-            </aside>
-          </div>
-        </div>
+            </div>
+          </aside>
 
-        <section class="reveal" data-reveal>
-          <h2 class="title" style="font-size: clamp(18px, 3vw, 34px); letter-spacing:.14em;">Start Here</h2>
-          <p class="subtitle">
-            Replace this content with your own: episode summaries, theories, fan art (inline), quotes, or a watch guide.
-            Use the other pages to organize everything.
+        </div>
+      </div>
+    </section>
+
+    <section id="lore" aria-labelledby="lore-title">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div>
+            <h2 id="lore-title">Lore, themes, and the “why” behind the fights</h2>
+          </div>
+          <p>
+            Naruto hits because it’s about belonging, stubborn hope, and the cost of power.
+            These sections are written like study notes: readable first, deeper second.
           </p>
-        </section>
-      </section>
-
-      <!-- PAGE 2: CHARACTERS -->
-      <section class="page" data-page="characters" aria-label="Characters page">
-        <div class="page-hero reveal" data-reveal>
-          <div class="kicker"><span class="dot" aria-hidden="true"></span><span>Personnel dossiers</span></div>
-          <h2 class="title"><span class="glitch" data-text="Characters">Characters</span></h2>
-          <p class="subtitle">A curated list. Swap names, descriptions, and “signal strength” to match your content.</p>
         </div>
 
-        <section>
-          <div class="gallery reveal" data-reveal>
-            <article class="char">
-              <div class="char-top">
-                <div>
-                  <h3>Eleven</h3>
-                  <p>Psychokinetic abilities. Quiet intensity. A compass pointed at the impossible.</p>
-                </div>
-                <span class="tag">PSI</span>
-              </div>
-              <div class="sig">
-                <small>Signal strength</small>
-                <div class="bar" aria-hidden="true"><i style="width:88%"></i></div>
-              </div>
-            </article>
-
-            <article class="char">
-              <div class="char-top">
-                <div>
-                  <h3>Mike Wheeler</h3>
-                  <p>Leader energy, loyal to the core. Keeps the group stitched together.</p>
-                </div>
-                <span class="tag">Party</span>
-              </div>
-              <div class="sig">
-                <small>Signal strength</small>
-                <div class="bar" aria-hidden="true"><i style="width:62%"></i></div>
-              </div>
-            </article>
-
-            <article class="char">
-              <div class="char-top">
-                <div>
-                  <h3>Dustin Henderson</h3>
-                  <p>Curiosity + comedy + science. If it has teeth, he’ll try to befriend it.</p>
-                </div>
-                <span class="tag">Radio</span>
-              </div>
-              <div class="sig">
-                <small>Signal strength</small>
-                <div class="bar" aria-hidden="true"><i style="width:74%"></i></div>
-              </div>
-            </article>
-
-            <article class="char">
-              <div class="char-top">
-                <div>
-                  <h3>Lucas Sinclair</h3>
-                  <p>Practical thinker. Protective. Calls it out when the plan is nonsense.</p>
-                </div>
-                <span class="tag">Scout</span>
-              </div>
-              <div class="sig">
-                <small>Signal strength</small>
-                <div class="bar" aria-hidden="true"><i style="width:58%"></i></div>
-              </div>
-            </article>
-
-            <article class="char">
-              <div class="char-top">
-                <div>
-                  <h3>Max Mayfield</h3>
-                  <p>Edges first, trust later. A survivor’s honesty with a fighter’s heart.</p>
-                </div>
-                <span class="tag">Arcade</span>
-              </div>
-              <div class="sig">
-                <small>Signal strength</small>
-                <div class="bar" aria-hidden="true"><i style="width:69%"></i></div>
-              </div>
-            </article>
-
-            <article class="char">
-              <div class="char-top">
-                <div>
-                  <h3>Jim Hopper</h3>
-                  <p>Small-town sheriff, big-time grit. Looks like trouble, acts like a shield.</p>
-                </div>
-                <span class="tag">Sheriff</span>
-              </div>
-              <div class="sig">
-                <small>Signal strength</small>
-                <div class="bar" aria-hidden="true"><i style="width:72%"></i></div>
-              </div>
-            </article>
+        <div class="features reveal" role="list" aria-label="Lore highlights">
+          <div class="feature" role="listitem">
+            <div class="label">01 / Bonds</div>
+            <div>
+              <h3>Found family & rivalry as fuel</h3>
+              <p>
+                The best conflicts aren’t “good vs evil”—they’re “two people who needed different things.”
+                Track how bonds evolve: teammates, mentors, and rivals that reshape identity.
+              </p>
+            </div>
+            <div class="meta">
+              <span class="badge"><i aria-hidden="true"></i> Character arcs</span>
+              <span class="badge"><i aria-hidden="true"></i> Mentorship</span>
+            </div>
           </div>
-        </section>
-      </section>
 
-      <!-- PAGE 3: LOCATIONS -->
-      <section class="page" data-page="locations" aria-label="Locations page">
-        <div class="page-hero reveal" data-reveal>
-          <div class="kicker"><span class="dot" aria-hidden="true"></span><span>Map fragments</span></div>
-          <h2 class="title"><span class="glitch" data-text="Locations">Locations</span></h2>
-          <p class="subtitle">A dossier-style rail for places: keep it readable, cinematic, and expandable.</p>
+          <div class="feature" role="listitem">
+            <div class="label">02 / Will</div>
+            <div>
+              <h3>Legacy, ideology, and the will to endure</h3>
+              <p>
+                The “will” theme is less slogan and more pressure: what you inherit, what you reject,
+                and what you choose to carry anyway.
+              </p>
+            </div>
+            <div class="meta">
+              <span class="badge"><i aria-hidden="true"></i> Ideals</span>
+              <span class="badge"><i aria-hidden="true"></i> Sacrifice</span>
+            </div>
+          </div>
+
+          <div class="feature" role="listitem">
+            <div class="label">03 / Power</div>
+            <div>
+              <h3>Techniques as storytelling</h3>
+              <p>
+                Jutsu aren’t just “moves”—they’re metaphors: control vs chaos, isolation vs connection,
+                restraint vs obsession. This fanpage treats powers like narrative language.
+              </p>
+            </div>
+            <div class="meta">
+              <span class="badge"><i aria-hidden="true"></i> Jutsu logic</span>
+              <span class="badge"><i aria-hidden="true"></i> Symbolism</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="timeline" aria-labelledby="timeline-title">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div>
+            <h2 id="timeline-title">Arc timeline (fan-made summary)</h2>
+          </div>
+          <p>
+            A compact, readable timeline you can expand later. Current labels are intentionally generic
+            so you can decide spoiler level and exact arc names.
+          </p>
         </div>
 
-        <section>
-          <div class="rail reveal" data-reveal aria-label="Locations rail">
-            <div class="entry">
-              <div class="node" aria-hidden="true"><i></i></div>
-              <div>
-                <h4>Hawkins Lab</h4>
-                <p>Clinical halls, locked doors, and questions that outnumber answers. Where the story bleeds through.</p>
+        <div class="timeline">
+          <article class="strip reveal" aria-label="Early arcs">
+            <header>
+              <div class="inner">
+                <strong>Early Missions</strong>
+                <small>Setup • bonds • stakes</small>
+              </div>
+            </header>
+            <div class="body">
+              <p>
+                Introduction to teams, village life, and the idea that the world is bigger—and harsher—than the academy.
+              </p>
+              <div class="callout">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M12 2l9 5v10l-9 5-9-5V7l9-5Z" stroke="currentColor" stroke-width="2" opacity=".9"/>
+                  <path d="M12 7v10M7.5 12H16.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+                <div>
+                  <div><b>Focus:</b> teamwork, first losses, first breakthroughs.</div>
+                </div>
               </div>
             </div>
-            <div class="entry">
-              <div class="node" aria-hidden="true"><i></i></div>
-              <div>
-                <h4>Byers House</h4>
-                <p>A home turned signal board. Familiar rooms, unfamiliar shadows. The walls remember.</p>
-              </div>
-            </div>
-            <div class="entry">
-              <div class="node" aria-hidden="true"><i></i></div>
-              <div>
-                <h4>Starcourt Mall</h4>
-                <p>Bright lights, loud music, and a sense that something beneath it all is listening.</p>
-              </div>
-            </div>
-            <div class="entry">
-              <div class="node" aria-hidden="true"><i></i></div>
-              <div>
-                <h4>The Upside Down</h4>
-                <p>A parallel ruin. Spore-filled air. Echoes of Hawkins, warped by hunger and cold.</p>
-              </div>
-            </div>
-          </div>
-        </section>
-      </section>
+          </article>
 
-      <!-- PAGE 4: CONTACT -->
-      <section class="page" data-page="contact" aria-label="Contact page">
-        <div class="page-hero reveal" data-reveal>
-          <div class="kicker"><span class="dot" aria-hidden="true"></span><span>Transmission request</span></div>
-          <h2 class="title"><span class="glitch" data-text="Contact">Contact</span></h2>
-          <p class="subtitle">A clean contact form. Wire this to Formspree / Netlify Forms later if you want.</p>
+          <article class="strip reveal" aria-label="Exams and escalation">
+            <header>
+              <div class="inner">
+                <strong>Exams & Escalation</strong>
+                <small>Pressure • talent • fear</small>
+              </div>
+            </header>
+            <div class="body">
+              <p>
+                Competition becomes conflict. Rivalries sharpen, mentors step in, and power reveals its price.
+              </p>
+              <div class="callout">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M6 19c4-8 8-8 12 0" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                  <path d="M12 4c2.2 0 4 1.8 4 4 0 2.4-1.6 4.2-4 6-2.4-1.8-4-3.6-4-6 0-2.2 1.8-4 4-4Z" stroke="currentColor" stroke-width="2" opacity=".9"/>
+                </svg>
+                <div>
+                  <div><b>Focus:</b> identity, ambition, and what “strong” really means.</div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="strip reveal" aria-label="Rescue and consequences">
+            <header>
+              <div class="inner">
+                <strong>Rescue & Consequences</strong>
+                <small>Choices • cost • resolve</small>
+              </div>
+            </header>
+            <div class="body">
+              <p>
+                A turning point: friendships are tested, the world expands, and every decision leaves a scar.
+              </p>
+              <div class="callout">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M12 21s-7-4.4-7-10a4 4 0 0 1 7-2 4 4 0 0 1 7 2c0 5.6-7 10-7 10Z" stroke="currentColor" stroke-width="2"/>
+                </svg>
+                <div>
+                  <div><b>Focus:</b> loyalty, regret, and “I won’t give up” as a practice.</div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="strip reveal" aria-label="War-era scale">
+            <header>
+              <div class="inner">
+                <strong>War-Era Scale</strong>
+                <small>History • ideology • fate</small>
+              </div>
+            </header>
+            <div class="body">
+              <p>
+                The story goes global: systems, cycles, and inherited conflict. Power peaks, but the emotional stakes stay personal.
+              </p>
+              <div class="callout">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M4 20V10l8-6 8 6v10" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                  <path d="M9 20v-6h6v6" stroke="currentColor" stroke-width="2" opacity=".9"/>
+                </svg>
+                <div>
+                  <div><b>Focus:</b> cycles of violence, redemption, and what peace costs.</div>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="dojo" aria-labelledby="dojo-title">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div>
+            <h2 id="dojo-title">Clans & Jutsu Dojo</h2>
+          </div>
+          <p>
+            Tap a clan to load a fan-made “profile” and a few technique notes. Replace these with your preferred lists,
+            add links, or plug in your own database later.
+          </p>
         </div>
 
-        <section>
-          <div class="panel reveal" data-reveal>
-            <h3 style="margin:0; font-family:'Cinzel',serif; letter-spacing:.14em; text-transform:uppercase; font-size:14px;">
-              Send a message
-            </h3>
-            <p style="margin:8px 0 0; color: var(--muted); line-height:1.65; max-width: 70ch;">
-              This demo doesn’t submit anywhere yet. It validates and shows a confirmation. You can connect it to a backend later.
-            </p>
-
-            <form class="form" id="contactForm">
-              <label class="field" aria-label="Your name">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                  <path d="M12 12a4.2 4.2 0 1 0 0-8.4A4.2 4.2 0 0 0 12 12Z" stroke="rgba(243,238,251,.75)" stroke-width="1.6"/>
-                  <path d="M4 20.4c1.8-4 5.1-6 8-6s6.2 2 8 6" stroke="rgba(243,238,251,.65)" stroke-width="1.6" stroke-linecap="round"/>
-                </svg>
-                <input name="name" autocomplete="name" placeholder="Your name" required />
-              </label>
-
-              <label class="field" aria-label="Email address">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                  <path d="M4 7.5C4 6.12 5.12 5 6.5 5h11C18.88 5 20 6.12 20 7.5v9C20 17.88 18.88 19 17.5 19h-11C5.12 19 4 17.88 4 16.5v-9Z" stroke="rgba(243,238,251,.75)" stroke-width="1.6"/>
-                  <path d="M5.2 7.2 12 12.1 18.8 7.2" stroke="rgba(243,238,251,.65)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-                <input name="email" type="email" autocomplete="email" placeholder="you@hawkins.local" required />
-              </label>
-
-              <label class="field" aria-label="Message">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                  <path d="M6 7.8h12M6 12h12M6 16.2h8" stroke="rgba(243,238,251,.7)" stroke-width="1.6" stroke-linecap="round"/>
-                </svg>
-                <textarea name="message" placeholder="Write your message…" required></textarea>
-              </label>
-
-              <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
-                <button class="btn btn-primary" type="submit">Send transmission</button>
-                <span id="contactStatus" style="color: rgba(243,238,251,.62); font-size: 12px; letter-spacing:.08em; text-transform: uppercase;"></span>
+        <div class="dojo reveal">
+          <div class="dojo-inner">
+            <div class="dojo-left">
+              <div class="tabs" role="tablist" aria-label="Clan selector">
+                <button class="tab" role="tab" aria-selected="true" aria-controls="dojoPanel" id="tab-uzumaki" data-clan="uzumaki">Uzumaki</button>
+                <button class="tab" role="tab" aria-selected="false" aria-controls="dojoPanel" id="tab-uchiha" data-clan="uchiha">Uchiha</button>
+                <button class="tab" role="tab" aria-selected="false" aria-controls="dojoPanel" id="tab-hyuga" data-clan="hyuga">Hyūga</button>
+                <button class="tab" role="tab" aria-selected="false" aria-controls="dojoPanel" id="tab-nara" data-clan="nara">Nara</button>
               </div>
-            </form>
-          </div>
-        </section>
-      </section>
 
-    </main>
+              <h3 id="dojoHeading">Uzumaki — endurance and seals</h3>
+              <p id="dojoBlurb">
+                Known for resilience and sealing techniques. Their vibe is “survive anything, protect what matters, keep moving.”
+              </p>
+              <div class="note" id="dojoNote">
+                Fan note: seals feel like “code” in this universe—rules, costs, and clever constraints.
+              </div>
+            </div>
+
+            <div class="dojo-right" id="dojoPanel" role="tabpanel" aria-labelledby="tab-uzumaki" tabindex="0">
+              <div class="title">
+                <strong id="dojoTechniqueTitle">Technique Notes</strong>
+                <small id="dojoEra">Era: Classic → Shippuden</small>
+              </div>
+              <p class="desc" id="dojoDesc">
+                A few fan-friendly metrics to describe techniques. Not canon—just helpful for comparing style and risk.
+              </p>
+
+              <div class="meter" aria-label="Technique meters">
+                <div class="bar">
+                  <span>Control</span>
+                  <div class="track"><div class="fill" data-fill="78"></div></div>
+                  <span>78</span>
+                </div>
+                <div class="bar">
+                  <span>Power</span>
+                  <div class="track"><div class="fill" data-fill="86"></div></div>
+                  <span>86</span>
+                </div>
+                <div class="bar">
+                  <span>Risk</span>
+                  <div class="track"><div class="fill" data-fill="62"></div></div>
+                  <span>62</span>
+                </div>
+                <div class="bar">
+                  <span>Utility</span>
+                  <div class="track"><div class="fill" data-fill="90"></div></div>
+                  <span>90</span>
+                </div>
+              </div>
+
+              <div class="callout" style="margin-top:14px">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M12 2a8 8 0 0 1 8 8c0 5-4 10-8 12-4-2-8-7-8-12a8 8 0 0 1 8-8Z" stroke="currentColor" stroke-width="2"/>
+                  <path d="M9.5 10.5c.7-1.2 4.3-1.2 5 0 .5.9.2 1.9-.6 2.5l-.9.6c-.6.4-.8 1-.8 1.8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+                <div>
+                  <div><b>Tip:</b> Want spoilers off? Keep names vague here and link to separate “spoiler” pages.</div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" aria-labelledby="about-title">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div>
+            <h2 id="about-title">About this fanpage</h2>
+          </div>
+          <p>
+            Built as a single-file, responsive HTML page—no external images, no frameworks—so it loads fast and looks intentional.
+          </p>
+        </div>
+
+        <div class="features reveal" role="list" aria-label="About highlights">
+          <div class="feature" role="listitem">
+            <div class="label">Craft</div>
+            <div>
+              <h3>Agency-grade layout, anime energy</h3>
+              <p>
+                “Ink & Ember” styling: sumi-ink darkness, ember highlights, and parchment accents.
+                The mission scroll is CSS-based so it won’t break.
+              </p>
+            </div>
+            <div class="meta">
+              <span class="badge"><i aria-hidden="true"></i> Responsive</span>
+              <span class="badge"><i aria-hidden="true"></i> Accessible</span>
+            </div>
+          </div>
+
+          <div class="feature" role="listitem">
+            <div class="label">Next</div>
+            <div>
+              <h3>Easy to extend</h3>
+              <p>
+                Add: character gallery (cards allowed), episode checklist, theory posts, or a “best OST tracks” section.
+                This structure is ready for it.
+              </p>
+            </div>
+            <div class="meta">
+              <span class="badge"><i aria-hidden="true"></i> Modular</span>
+              <span class="badge"><i aria-hidden="true"></i> SEO-ready</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <footer>
-      <div>
-        <div style="font-family:'Cinzel',serif; letter-spacing:.14em; text-transform:uppercase; color: rgba(243,238,251,.72); font-weight:700;">
-          Hawkins Archive
+      <div class="wrap">
+        <div class="footer-grid">
+          <div>
+            <a class="brand" href="#top" style="margin-bottom:8px">
+              <div class="mark" aria-hidden="true"></div>
+              <div>
+                <strong>Leaf Signal</strong>
+                <span>Naruto fanpage · fan-made</span>
+              </div>
+            </a>
+            <div class="fine">
+              Disclaimer: This is a fan-made website concept. “Naruto” and related names are trademarks/copyright of their respective owners.
+              No affiliation implied. Replace text with your own fan content and credit artists if you add artwork.
+            </div>
+          </div>
+          <div class="footer-links" aria-label="Footer links">
+            <a href="#lore">Lore</a>
+            <a href="#timeline">Timeline</a>
+            <a href="#dojo">Clans & Jutsu</a>
+            <a href="#top">Back to top</a>
+          </div>
         </div>
-        <div style="margin-top:6px; max-width: 70ch;">
-          This file includes 4 pages via hash routing. If you want “real” 4 separate HTML files, tell me and I’ll split it cleanly.
-        </div>
-      </div>
-      <div style="display:flex; gap:14px; align-items:center; flex-wrap:wrap;">
-        <a href="#/home">Back to top</a>
-        <span aria-hidden="true" style="opacity:.35;">•</span>
-        <span>HTML + CSS + JS</span>
       </div>
     </footer>
-  </div>
+  </main>
 
   <script>
-    // Mobile menu
-    const menuBtn = document.getElementById('menuBtn');
-    const mobilePanel = document.getElementById('mobilePanel');
-
-    function setMenu(open){
-      if(!menuBtn || !mobilePanel) return;
-      menuBtn.setAttribute('aria-expanded', String(open));
-      mobilePanel.style.maxHeight = open ? (mobilePanel.scrollHeight + 'px') : '0px';
-    }
-    menuBtn?.addEventListener('click', () => {
-      const open = menuBtn.getAttribute('aria-expanded') === 'true';
-      setMenu(!open);
-    });
-    mobilePanel?.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setMenu(false)));
-
-    // Routing: #/home, #/characters, #/locations, #/contact
-    const pages = [...document.querySelectorAll('.page[data-page]')];
-    const navLinks = [...document.querySelectorAll('[data-route]')];
-
-    function getRoute(){
-      const h = location.hash || '#/home';
-      const match = h.match(/^#\/([a-z-]+)/i);
-      return (match?.[1] || 'home').toLowerCase();
-    }
-
-    function setActivePage(route){
-      let found = false;
-      pages.forEach(p => {
-        const on = p.dataset.page === route;
-        p.classList.toggle('active', on);
-        if(on) found = true;
-      });
-      if(!found){
-        // fallback
-        pages.forEach(p => p.classList.toggle('active', p.dataset.page === 'home'));
-        route = 'home';
-      }
-
-      navLinks.forEach(a => {
-        const on = a.dataset.route === route;
-        a.toggleAttribute('aria-current', on);
-        if(on) a.setAttribute('aria-current','page');
-      });
-
-      // close menu on navigation
-      setMenu(false);
-
-      // scroll to top for "page" feel
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-
-      // re-trigger reveals for newly shown page
-      requestAnimationFrame(() => {
-        const visibleReveals = document.querySelectorAll('.page.active [data-reveal]');
-        visibleReveals.forEach(el => {
-          // reset then reveal
-          el.classList.remove('in');
-        });
-        requestAnimationFrame(() => {
-          visibleReveals.forEach(el => el.classList.add('in'));
-          const staggers = document.querySelectorAll('.page.active .stagger');
-          staggers.forEach(s => s.classList.add('in'));
-        });
-      });
-    }
-
-    window.addEventListener('hashchange', () => setActivePage(getRoute()));
-    // Initial route
-    if(!location.hash) location.hash = '#/home';
-    setActivePage(getRoute());
-
-    // Scroll reveal (for first load; route changes also force "in")
-    const revealEls = [...document.querySelectorAll('[data-reveal]')];
+    // Scroll reveals
+    const revealEls = Array.from(document.querySelectorAll('.reveal'));
     const io = new IntersectionObserver((entries) => {
       entries.forEach(e => {
-        if(e.isIntersecting){
-          e.target.classList.add('in');
-          if(e.target.classList.contains('stagger')) e.target.classList.add('in');
-          io.unobserve(e.target);
-        }
+        if (e.isIntersecting) e.target.classList.add('is-in');
       });
-    }, { threshold: 0.12 });
+    }, { threshold: 0.14 });
     revealEls.forEach(el => io.observe(el));
 
-    // Alphabet wall
-    const alphabetRoot = document.getElementById('alphabet');
-    const decodedEl = document.getElementById('decoded');
-    const copyBtn = document.getElementById('copyBtn');
-    const clearBtn = document.getElementById('clearBtn');
-    const backspaceBtn = document.getElementById('backspaceBtn');
-    const lightsBtn = document.getElementById('lightsBtn');
-    const noiseEl = document.getElementById('noise');
+    // CTA scroll
+    document.getElementById('ctaScroll')?.addEventListener('click', () => {
+      const t = document.querySelector('#timeline');
+      if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
 
-    let message = "";
-    let lightsOn = true;
+    // Mobile drawer
+    const drawer = document.getElementById('drawer');
+    const openMenu = document.getElementById('openMenu');
+    const closeMenu = document.getElementById('closeMenu');
 
-    const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
-    const wallButtons = [];
-
-    function renderDecoded(){
-      if(!decodedEl) return;
-      decodedEl.textContent = message.length ? message : "PRESS LETTERS…";
-      decodedEl.title = message;
-    }
-
-    function pressLetter(ch){
-      message += ch;
-      renderDecoded();
-
-      const btn = wallButtons.find(b => b.dataset.letter === ch);
-      if(btn){
-        btn.setAttribute('aria-pressed', 'true');
-        setTimeout(() => btn.setAttribute('aria-pressed', 'false'), 260);
-      }
-
-      if(noiseEl){
-        const len = message.length;
-        noiseEl.textContent = len < 6 ? "low" : len < 14 ? "rising" : len < 22 ? "high" : "severe";
+    function setDrawer(open){
+      drawer.setAttribute('aria-hidden', String(!open));
+      document.body.style.overflow = open ? 'hidden' : '';
+      if(open){
+        closeMenu?.focus();
+      }else{
+        openMenu?.focus();
       }
     }
+    openMenu?.addEventListener('click', () => setDrawer(true));
+    closeMenu?.addEventListener('click', () => setDrawer(false));
+    drawer?.addEventListener('click', (e) => {
+      if(e.target === drawer) setDrawer(false);
+    });
+    drawer?.querySelectorAll('[data-close-drawer]')?.forEach(a => {
+      a.addEventListener('click', () => setDrawer(false));
+    });
 
-    function buildAlphabet(){
-      if(!alphabetRoot) return;
-      alphabetRoot.innerHTML = "";
-      wallButtons.length = 0;
-      letters.forEach((ch) => {
-        const b = document.createElement('button');
-        b.type = "button";
-        b.textContent = ch;
-        b.dataset.letter = ch;
-        b.setAttribute('aria-pressed', 'false');
-        b.addEventListener('click', () => {
-          if(!lightsOn) return;
-          pressLetter(ch);
+    // Keyboard shortcuts: 1–4 for navigation (and Esc for drawer)
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && drawer.getAttribute('aria-hidden') === 'false') setDrawer(false);
+      if (e.target && ['INPUT','TEXTAREA','SELECT'].includes(e.target.tagName)) return;
+
+      const map = {
+        '1': '#lore',
+        '2': '#timeline',
+        '3': '#dojo',
+        '4': '#about'
+      };
+      if(map[e.key]){
+        document.querySelector(map[e.key])?.scrollIntoView({behavior:'smooth', block:'start'});
+      }
+    });
+
+    // Dojo data
+    const clanData = {
+      uzumaki: {
+        heading: "Uzumaki — endurance and seals",
+        blurb: "Known for resilience and sealing techniques. Their vibe is “survive anything, protect what matters, keep moving.”",
+        note: "Fan note: seals feel like “code” in this universe—rules, costs, and clever constraints.",
+        era: "Era: Classic → Shippuden",
+        desc: "A few fan-friendly metrics to describe techniques. Not canon—just helpful for comparing style and risk.",
+        meters: { control: 78, power: 86, risk: 62, utility: 90 }
+      },
+      uchiha: {
+        heading: "Uchiha — perception, passion, and consequence",
+        blurb: "A clan defined by intensity: love, loss, pride, and the way emotion can become power—and a trap.",
+        note: "Fan note: this story loves the question, “What would you do for someone you can’t save?”",
+        era: "Era: Classic → Shippuden",
+        desc: "Think precision + overwhelming bursts. Strong highs, but the emotional and strategic cost can be steep.",
+        meters: { control: 72, power: 94, risk: 78, utility: 66 }
+      },
+      hyuga: {
+        heading: "Hyūga — discipline and close-range mastery",
+        blurb: "A style built on control: footwork, timing, and pressure points. Quiet confidence, surgical outcomes.",
+        note: "Fan note: the most satisfying fights feel like chess played at sprint speed.",
+        era: "Era: Classic → Shippuden",
+        desc: "Consistent, technical, and efficient. Less flashy, more inevitable—like a door closing.",
+        meters: { control: 92, power: 70, risk: 48, utility: 80 }
+      },
+      nara: {
+        heading: "Nara — strategy first, power second",
+        blurb: "Brains as a weapon. Their techniques reward patience, planning, and the courage to make hard calls.",
+        note: "Fan note: the best tacticians win by limiting options—yours.",
+        era: "Era: All eras",
+        desc: "High utility and control. Power comes from positioning and certainty, not raw output.",
+        meters: { control: 88, power: 62, risk: 54, utility: 95 }
+      }
+    };
+
+    const tabs = Array.from(document.querySelectorAll('.tab'));
+    const dojoHeading = document.getElementById('dojoHeading');
+    const dojoBlurb = document.getElementById('dojoBlurb');
+    const dojoNote = document.getElementById('dojoNote');
+    const dojoEra = document.getElementById('dojoEra');
+    const dojoDesc = document.getElementById('dojoDesc');
+    const fills = Array.from(document.querySelectorAll('.fill'));
+
+    function animateMeters(m){
+      const vals = [m.control, m.power, m.risk, m.utility];
+      fills.forEach((el, idx) => {
+        // reset then animate for reflow
+        el.style.width = '0%';
+        const target = vals[idx] ?? 0;
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            el.style.width = `${target}%`;
+          });
         });
-        wallButtons.push(b);
-        alphabetRoot.appendChild(b);
+        // update numeric label
+        const bar = el.closest('.bar');
+        const last = bar?.querySelector('span:last-child');
+        if(last) last.textContent = String(target);
       });
     }
-    buildAlphabet();
-    renderDecoded();
 
-    window.addEventListener('keydown', (e) => {
-      // Only allow typing when on Home page (so forms work on Contact page)
-      if(getRoute() !== 'home') return;
+    function setClan(key){
+      const d = clanData[key];
+      if(!d) return;
 
-      const key = e.key.toUpperCase();
-      if(key.length === 1 && key >= 'A' && key <= 'Z'){
-        if(lightsOn) pressLetter(key);
-      } else if(e.key === 'Backspace'){
-        message = message.slice(0, -1);
-        renderDecoded();
-      } else if(e.key === 'Escape'){
-        message = "";
-        renderDecoded();
-      }
-    });
+      tabs.forEach(t => {
+        const active = t.dataset.clan === key;
+        t.setAttribute('aria-selected', String(active));
+      });
 
-    backspaceBtn?.addEventListener('click', () => {
-      message = message.slice(0, -1);
-      renderDecoded();
-    });
+      dojoHeading.textContent = d.heading;
+      dojoBlurb.textContent = d.blurb;
+      dojoNote.textContent = d.note;
+      dojoEra.textContent = d.era;
+      dojoDesc.textContent = d.desc;
 
-    clearBtn?.addEventListener('click', () => {
-      message = "";
-      if(noiseEl) noiseEl.textContent = "low";
-      renderDecoded();
-    });
+      animateMeters(d.meters);
 
-    copyBtn?.addEventListener('click', async () => {
-      const text = message.trim();
-      if(!text) return;
-      try{
-        await navigator.clipboard.writeText(text);
-        copyBtn.textContent = "Copied";
-        setTimeout(() => copyBtn.textContent = "Copy", 900);
-      }catch{
-        copyBtn.textContent = "Copy failed";
-        setTimeout(() => copyBtn.textContent = "Copy", 900);
-      }
-    });
-
-    lightsBtn?.addEventListener('click', () => {
-      lightsOn = !lightsOn;
-      lightsBtn.textContent = lightsOn ? "Toggle wall lights" : "Wall lights: off";
-      wallButtons.forEach(b => b.style.opacity = lightsOn ? "1" : ".45");
-    });
-
-    // EMF meter drift + protocol spike
-    const emfBar = document.getElementById('emfBar');
-    const panicBtn = document.getElementById('panicBtn');
-    const statusWord = document.getElementById('statusWord');
-    const statusSub = document.getElementById('statusSub');
-
-    let emf = 0.34;
-
-    function setEMF(v){
-      emf = Math.max(0.06, Math.min(0.98, v));
-      if(emfBar) emfBar.style.width = (emf * 100).toFixed(0) + "%";
-
-      if(statusWord && statusSub){
-        const s =
-          emf < 0.28 ? ["Stable","quiet"] :
-          emf < 0.52 ? ["Unclear","static"] :
-          emf < 0.74 ? ["Active","nearby"] :
-          ["Critical","breach"];
-        statusWord.textContent = s[0];
-        statusSub.textContent = s[1];
-      }
+      // update aria-labelledby for the panel
+      const activeTab = document.querySelector(`.tab[data-clan="${key}"]`);
+      const panel = document.getElementById('dojoPanel');
+      if(activeTab && panel) panel.setAttribute('aria-labelledby', activeTab.id);
     }
-    setEMF(emf);
 
-    function drift(){
-      const jitter = (Math.random() - 0.5) * 0.08;
-      const pull = (0.34 - emf) * 0.02;
-      setEMF(emf + jitter + pull);
-      setTimeout(drift, 900 + Math.random() * 800);
-    }
-    drift();
+    tabs.forEach(t => t.addEventListener('click', () => setClan(t.dataset.clan)));
 
-    panicBtn?.addEventListener('click', () => {
-      setEMF(Math.min(0.98, emf + 0.48));
-      panicBtn.textContent = "Sealed";
-      setTimeout(() => panicBtn.textContent = "Protocol", 1100);
-
-      const stage = document.querySelector('.page.active .stage');
-      if(stage){
-        stage.animate([
-          { transform: 'translateY(0px) rotate(0deg)' },
-          { transform: 'translateY(-1px) rotate(-.2deg)' },
-          { transform: 'translateY(1px) rotate(.2deg)' },
-          { transform: 'translateY(0px) rotate(0deg)' }
-        ], { duration: 320, iterations: 1, easing: 'cubic-bezier(.2,.85,.2,1)' });
-      }
+    // initial meter animation after load
+    window.addEventListener('load', () => {
+      setClan('uzumaki');
     });
 
-    // Contact form demo
-    const contactForm = document.getElementById('contactForm');
-    const contactStatus = document.getElementById('contactStatus');
-
-    contactForm?.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const fd = new FormData(contactForm);
-      const name = (fd.get('name') || '').toString().trim();
-      if(!name) return;
-
-      if(contactStatus){
-        contactStatus.textContent = "Transmission queued • check back soon";
-        setTimeout(() => contactStatus.textContent = "", 2600);
-      }
-      contactForm.reset();
-      setEMF(Math.min(0.98, emf + 0.18));
-    });
-
-    // Recalc mobile panel height on resize
-    window.addEventListener('resize', () => {
-      const open = menuBtn?.getAttribute('aria-expanded') === 'true';
-      if(open && mobilePanel) mobilePanel.style.maxHeight = mobilePanel.scrollHeight + 'px';
+    // Keep header nav "aria-current" updated on click (simple)
+    document.querySelectorAll('nav a').forEach(a => {
+      a.addEventListener('click', () => {
+        document.querySelectorAll('nav a').forEach(x => x.removeAttribute('aria-current'));
+        a.setAttribute('aria-current','page');
+      });
     });
   </script>
 </body>
